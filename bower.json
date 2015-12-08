@@ -1,0 +1,22 @@
+{
+  "name": "SocialNetworkingApp",
+  "authors": [
+    "Thishani Lucas",
+    "Charles Rajendran"
+  ],
+  "description": "PHP, MYSQL, Bootstrap,AngularJS,JSON based social networking project",
+  "main": "index.php",
+  "moduleType": [],
+  "keywords": [
+    "Social",
+    "Networking",
+    "Site",
+    "PHP",
+    "MYSQL",
+    "JSON",
+    "ANGULARJS"
+  ],
+  "license": "none",
+  "homepage": "index.html",
+  "private": true
+}
