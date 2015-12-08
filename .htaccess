@@ -1,0 +1,3 @@
+ErrorDocument 404 http://localhost/SocialNetworkingApp/404.php
+
+IndexIgnore *

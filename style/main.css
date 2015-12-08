@@ -4,6 +4,9 @@ body {
 	
 #my_section{
 	padding-top:50px;
-	margin:0% 15%;
+	margin-top:0px;
+	margin-bottom:0px;
+	margin-left:12%;
+	margin-right:15%;
 	border: solid red 1px;
 	}
