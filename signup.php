@@ -1,57 +1,66 @@
 <?php include_once('.\templates\header_tem.php'); ?>
 
+<script type="text/javascript" src="script/signup.js"></script>
+
     <ul class="nav navbar-nav navbar-right" style="margin:0.8%;">
-         <form class="form-inline" role="form">
+         <form class="form-inline" role="form" onSubmit="return false;">
               <div class="form-group">
                 <label style="color:white">Email&nbsp;</label>
-                <input type="text" class="form-control" id="Email" placeholder="Email" style="height:25px;">
+                <input type="text" class="form-control" id="Email1" placeholder="Email" style="height:25px;">
               </div>
               <div class="form-group">
                 <label style="color:white"> &nbsp;&nbsp;Password&nbsp;</label>
-                <input type="password" class="form-control" id="Password" placeholder="Password" style="height:25px;">&nbsp;
+                <input type="password" class="form-control" id="Password1" placeholder="Password" style="height:25px;">&nbsp;
               </div>
           	  <button type="submit" class="btn btn-warning" style="height:32px;">Login</button><br />
               <div class="checkbox" style="color:#F56E06;">
                 <label>
-                  <input type="checkbox"> Remember me(keep you logged in for 1 month)
+                  <input type="checkbox"> <span style="font-size:12px;">Remember me(keep you logged in for 1 month)</span>
                 </label>
               </div>
-              <button class="btn btn-link" style="color:#F56E06">Forgot your password?</button>
+              <button class="btn btn-link" style="color:#F56E06;"><span style="font-size:12px;">Forgot your password?</span></button>
         </form>
     </ul>
     
     </header>
     
     <section id="my_section">
+    
     <div class="row">
+      
       <div class="col-md-8">
       	<img src="img/logo_round2.gif" width="600px" height="600px"/>
       </div>
       
       <div class="col-md-4">
-      <form role="form" class="" style="margin-top:20%;margin-right:0%;width:100%;">
+      
+      <form role="form" name="signupform" class="" style="margin-top:20%;margin-right:0%;width:100%;" onSubmit="return false;">
       	<h3 style="color:orange;"> Signup for முகநூல் now.... </h3>
         <hr/>
+         
           <div class="form-group">
-            <input type="text" class="form-control" id="User_Name" placeholder="Enter User Name" maxlength="32" >
-            <span id="unamestatus" style="display:none;"></span>
+            <input type="text" class="form-control" id="User_Name" placeholder="Enter User Name" maxlength="32" onBlur="checkUserName();" onFocus="emptyDivElement('unamestatus')" >
+            <span id="unamestatus" style="display:none;color:red;" class="validate"></span>
           </div>
+         
           <div class="form-group">
-            <input type="text" class="form-control" id="Email" placeholder="Enter Email Address" maxlength="255">
-            <span id="emailstatus" style="display:none;"></span>
+            <input type="email" class="form-control" id="Email" placeholder="Enter Email Address" maxlength="255" onBlur="checkEmail();" onFocus="emptyDivElement('emailstatus')" >
+            <span id="emailstatus" style="display:none;color:red;" class="validate"></span>
           </div>
+         
           <div class="form-group">
-            <input type="password" class="form-control" id="Password" placeholder="Enter a Password" maxlength="255">
-            <span id="passstatus" style="display:none;"></span>
+            <input type="password" class="form-control" id="Password" placeholder="Enter a Password" maxlength="255" onKeyUp="passwordStrength()" onBlur="passwordcheck();">
+            <span id="passstatus" style="display:none;color:red;" class="validate"></span>
           </div>
+         
           <div class="form-group">
-            <input type="password" class="form-control" id="Confirm_Password" placeholder="Confirm your Password" maxlength="255">
-            <span id="conpassstatus" style="display:none;"></span>
+            <input type="password" class="form-control" id="Confirm_Password" placeholder="Confirm your Password" maxlength="255" onKeyUp="passwordcheck();" onBlur="passwordcheck();">
+            <span id="conpassstatus" style="display:none;color:red;" class="validate"></span>
           </div>
+         
             <div class="form-group">
-               <select class="form-control">
+               <select class="form-control" id="country">
                     <option>Select your country...</option>
-                    <option value="AF">Afghanistan</option>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Åland Islands">Åland Islands</option>
                     <option value="Albania">Albania</option>
@@ -297,32 +306,35 @@
                     <option value="Zambia">Zambia</option>
                     <option value="Zimbabwe">Zimbabwe</option>
                 </select>
+             <span id="countrystatus" style="display:none;color:red;" class="validate"></span>
              </div>
            
            <div class="form-group">
             <label for="Birthday" style="font-weight:bold;">Birthday</label>&nbsp;&nbsp;
-            <input type="date" class="form-control" id="Birthday">
-            <span id="Birthdaystatus" style="display:none;"></span>
+            <input type="date" class="form-control" id="Birthday" >
+            <span id="Birthdaystatus" style="display:none;color:red;" class="validate"></span>
+         
           </div>
-            <div class="radio">
+            <div class="form-group">
             <label for="Gender" style="font-weight:bold;">Gender</label>&nbsp;&nbsp;
-              <label>
-                <input type="radio" name="gender" id="male" value="m">
-                male
-              </label>&nbsp;&nbsp;
-              <label>
-                <input type="radio" name="gender" id="female" value="f">
-                female
-              </label>
+              <select class="form-control" id="gender">
+                    <option>Select Gender</option>
+                    <option value="m">male</option>
+                    <option value="f">female</option>
+               </select>
+               <span id="genstatus" style="display:none;color:red;" class="validate"></span>
              </div>
+         
           <div class="form-group">
             <label for="Profile_Picture">Profile Picture</label>
-            <input type="file" id="exampleProfile_PictureInputFile">
+            <input type="file" id="Profile_PictureInputFile">
           </div>
           <div class="form-group" align="left">
-            <button type="submit" class="btn btn-success btn-lg" >Signup</button>
+            <button type="submit" class="btn btn-success" id="signupSubmit" onClick="signup()" >Signup</button>
           </div>
+    
         </form>
+    
       </div>
     </div>
     

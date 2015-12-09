@@ -9,6 +9,9 @@
     <link href="http://localhost/SocialNetworkingApp/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://localhost/SocialNetworkingApp/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
   	 <link href="http://localhost/SocialNetworkingApp/style/main.css" rel="stylesheet">
+     <script type="text/javascript" src="../script/ajax.js"></script>
+     <script type="text/javascript" src="../script/autoscroll.js"></script>
+     <script type="text/javascript" src="../script/expand_retract.js"></script>
   </head>
   <body>
  	<header id="my_header">
