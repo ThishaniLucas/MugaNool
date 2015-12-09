@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+<body>
+<script type="text/javascript" src="../script/ajax.js"></script>
+<script type="text/javascript">
+	var ajax = ajaxObj("POST","parser.php");
+	ajax.onreadystatechange = function(){
+		if(ajaxReturn(ajax)){
+			alert(ajax.responseText);
+			}
+		}
+	ajax.send("name=Charles&country=SL");
+</script>
+</body>
+</html>
