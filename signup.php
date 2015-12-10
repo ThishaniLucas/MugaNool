@@ -1,9 +1,9 @@
 <?php include_once('.\templates\header_tem.php'); ?>
-
+<script type="text/javascript" src="script/ajax.js"></script>
 <script type="text/javascript" src="script/signup.js"></script>
 
     <ul class="nav navbar-nav navbar-right" style="margin:0.8%;">
-         <form class="form-inline" role="form" onSubmit="return false;">
+         <form class="form-inline" role="form" onSubmit="return false;" autocomplete="on">
               <div class="form-group">
                 <label style="color:white">Email&nbsp;</label>
                 <input type="text" class="form-control" id="Email1" placeholder="Email" style="height:25px;">
@@ -26,7 +26,7 @@
     
     <section id="my_section">
     
-    <div class="alert alert-danger" role="alert" style="margin-top:3%;font-size:16px;display:none;" id="error1_alert" align="center"></div>
+    <div class="alert alert-danger" role="alert" style="margin-top:5%;font-size:16px;display:none;" id="error1_alert" align="center"></div>
     
     <div class="row">
       
@@ -37,17 +37,17 @@
       <div class="col-md-4">
       
       
-      <form role="form" name="signupform" class="" style="margin-top:15%;margin-right:0%;width:100%;" onSubmit="return false;">
+      <form role="form" name="signupform" class="" style="margin-top:15%;margin-right:0%;width:100%;" onSubmit="return false;" autocomplete="off">
       	<h3 style="color:orange;"> Signup for முகநூல் now.... </h3>
         <hr/>
          
           <div class="form-group">
-            <input type="text" class="form-control" id="User_Name" placeholder="Enter User Name" maxlength="32" onBlur="checkUserName();" onFocus="emptyDivElement('unamestatus')" >
-            <span id="unamestatus" style="display:none;color:red;" 	 class="bg-info"></span>
+            <input type="text" class="form-control" id="User_Name" placeholder="Enter User Name" maxlength="32" onKeyUp="checkUserName();" onFocus="emptyDivElement('unamestatus')" >
+            <span id="unamestatus" style="display:none;color:red;" 	class="bg-success"></span>
           </div>
          
           <div class="form-group">
-            <input type="email" class="form-control" id="Email" placeholder="Enter Email Address" maxlength="255" onBlur="checkEmail();" onFocus="emptyDivElement('emailstatus')" >
+            <input type="email" class="form-control" id="Email" placeholder="Enter Email Address" maxlength="255" onKeyUp="checkEmail();" onFocus="emptyDivElement('emailstatus')" >
             <span id="emailstatus" style="display:none;color:red;" class="bg-info"></span>
           </div>
          
@@ -327,11 +327,6 @@
                </select>
                <span id="genstatus" style="display:none;color:red;" class="bg-info"></span>
              </div>
-         
-          <div class="form-group">
-            <label for="Profile_Picture">Profile Picture</label>
-            <input type="file" id="Profile_PictureInputFile">
-          </div>
           <div class="form-group" align="left">
             <button type="submit" class="btn btn-success" id="signupSubmit" onClick="signup()" >Signup</button>
           </div>

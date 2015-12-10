@@ -7,13 +7,23 @@
 <body>
 <script type="text/javascript" src="../script/ajax.js"></script>
 <script type="text/javascript">
+
+function x(){
+	var y = document.getElementById('t').value;
+	var d = document.getElementById('d');
 	var ajax = ajaxObj("POST","parser.php");
 	ajax.onreadystatechange = function(){
 		if(ajaxReturn(ajax)){
-			alert(ajax.responseText);
+			d.innerHTML=ajax.responseText;
 			}
 		}
-	ajax.send("name=Charles&country=SL");
+	ajax.send("name="+y+"&country=SL");
+}
 </script>
+
+<input type="text" onKeyUp="x()" id="t" />
+
+<div id="d"></div>
+
 </body>
 </html>

@@ -26,13 +26,13 @@ function checkEmail(){
 	var e = document.getElementById("Email").value;
 	if(e != ""){
 		var es = document.getElementById("emailstatus");
-		es.innerHTML = "checking email...";
-		es.style.display="inline";
+		
 		
 		var ajax = ajaxObj("POST","http://localhost/SocialNetworkingApp/signupcheck.php");
 		ajax.onreadystatechange = function(){
 			if(ajaxReturn(ajax)==true){
 					es.innerHTML = ajax.responseText;
+					es.style.display="inline";
 				}
 			}
 			ajax.send("emailcheck="+e);
@@ -44,14 +44,12 @@ function checkUserName(){
 	var u = document.getElementById("User_Name").value;
 	if(u != ""){
 		var us = document.getElementById("unamestatus");
-		us.innerHTML = 'checking username';
-		//<img src="http://localhost/SocialNetworkingApp/img/load2.gif" />
-		us.style.display="inline";
 		
 		var ajax = ajaxObj("POST","http://localhost/SocialNetworkingApp/signupcheck.php");
 		ajax.onreadystatechange = function(){
 			if(ajaxReturn(ajax)==true){
 					us.innerHTML = ajax.responseText;
+					us.style.display="inline";
 				}
 			}
 			ajax.send("usernamecheck="+u);
@@ -144,14 +142,16 @@ function signup(){
 			ajax.onreadystatechange = function(){
 			if(ajaxReturn(ajax)==true){
 					if(ajax.responseText != "signup_success"){
+							
 							document.getElementById("error1_alert").innerHTML =ajax.responseText;
 							document.getElementById("error1_alert").style.display="block";
 					}else{
-							
+							alert(ajax.responseText);
 					}
 				}
 			}
-			
+			ajax.send("u="+u.value+"&e="+e.value+"&p="+p.value+"&g="+g.value+"&c="+c.value+"&b="+b.value);
+			//window.location="http://localhost/SocialNetworkingApp/signupcheck.php";
 			}
 	}
 	

@@ -11,11 +11,11 @@ CREATE TABLE users(
   website varchar(255),
   counry varchar(255),
   userlevel enum('a','b','c','d') NOT NULL DEFAULT 'a',
-  avatar varchar(255) NOT NULL,
-  ip varchar(255) NOT NULL,
-  signup datetime NOT NULL,
-  lastlogin datetime NOT NULL,
-  notescheck datetime NOT NULL,
+  avatar varchar(255),
+  ip varchar(255),
+  signup datetime,
+  lastlogin datetime,
+  notescheck datetime,
   activated enum('0','1') NOT NULL DEFAULT '0' 
   );
 
