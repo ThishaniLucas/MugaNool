@@ -8,9 +8,51 @@
               
               <ul class="nav navbar-nav navbar-right">
               	<li><a href="#" title="Home"><span class="glyphicon glyphicon-home"></span></a></li>
-                <li><a href="#" title="friend requests"><span class="glyphicon glyphicon-user"></span></a></li>
-                <li><a href="#" title="Messages"><span class="glyphicon glyphicon-envelope"></span></a></li>
-                <li><a href="#" title="notifications"><span class="glyphicon glyphicon-bell"></span></a></li>
+                
+                <li class="dropdown"><a href="#" title="friend requests" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp;<span class="badge" style="font-size:9px;margin-bottom:3px;" id="request_count">4</span></a>
+                <ul class="dropdown-menu list-group" role="menu">
+                   <div class="list-group">
+                      <a href="#" class="list-group-item active">
+                        Friend one
+                      </a>
+                      <a href="#" class="list-group-item"> Friend one</a>
+                      <a href="#" class="list-group-item"> Friend one</a>
+                      <a href="#" class="list-group-item"> Friend one</a>
+                      <a href="#" class="list-group-item"> Friend one</a>
+                    </div>
+                  </ul>
+                
+                </li>
+                
+                <li class="dropdown"><a href="#" title="Messages" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-envelope"></span> &nbsp;<span class="badge" style="font-size:9px;margin-bottom:3px;" id="message_count">4</span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <div class="list-group">
+                      <a href="#" class="list-group-item active">
+                        Friend one
+                      </a>
+                      <a href="#" class="list-group-item"> Friend one</a>
+                      <a href="#" class="list-group-item"> Friend one</a>
+                      <a href="#" class="list-group-item"> Friend one</a>
+                      <a href="#" class="list-group-item"> Friend one</a>
+                    </div>
+                  </ul>
+                
+                </li>
+                
+                <li class="dropdown"><a href="#" title="notifications" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-bell"></span> &nbsp;<span class="badge" style="font-size:9px;margin-bottom:3px;" id="notification_count">4</span></a>
+                <ul class="dropdown-menu" role="menu">
+                   <div class="list-group">
+                      <a href="#" class="list-group-item active">
+                        Friend one
+                      </a>
+                      <a href="#" class="list-group-item"> Friend one</a>
+                      <a href="#" class="list-group-item"> Friend one</a>
+                      <a href="#" class="list-group-item"> Friend one</a>
+                      <a href="#" class="list-group-item"> Friend one</a>
+                    </div>
+                  </ul>
+                </li>
+                
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Profile	"><span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">

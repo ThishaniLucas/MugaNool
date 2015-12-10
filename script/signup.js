@@ -44,7 +44,8 @@ function checkUserName(){
 	var u = document.getElementById("User_Name").value;
 	if(u != ""){
 		var us = document.getElementById("unamestatus");
-		us.innerHTML = "checking username...";
+		us.innerHTML = 'checking username';
+		//<img src="http://localhost/SocialNetworkingApp/img/load2.gif" />
 		us.style.display="inline";
 		
 		var ajax = ajaxObj("POST","http://localhost/SocialNetworkingApp/signupcheck.php");
@@ -125,11 +126,32 @@ function signup(){
 	
 		if(u.value=="" || e.value=="" || p.value=="" || cp.value=="" || g.value=="" || c.value=="" || b.value==""){
 			emptyTfElement('Password');
-			emptyTfElement('Confirm_Password');		
-			
+			emptyTfElement('Confirm_Password');	
+			document.getElementById("error1_alert").innerHTML ="Error on login, Fillout all data!!!";
+			document.getElementById("error1_alert").style.display="block";
 			}
 		else if(p.value != cp.value){
-				
+			emptyTfElement('Password');
+			emptyTfElement('Confirm_Password');	
+			document.getElementById("error1_alert").innerHTML ="Error on login, Password Confirmation failed!!!";
+			document.getElementById("error1_alert").style.display="block";
+			}
+		else{
+			but.disabled = true;
+			but.innerHTML="please wait..."
+			
+			var ajax = ajaxObj("POST","http://localhost/SocialNetworkingApp/signupcheck.php");
+			ajax.onreadystatechange = function(){
+			if(ajaxReturn(ajax)==true){
+					if(ajax.responseText != "signup_success"){
+							document.getElementById("error1_alert").innerHTML =ajax.responseText;
+							document.getElementById("error1_alert").style.display="block";
+					}else{
+							
+					}
+				}
+			}
+			
 			}
 	}
 	

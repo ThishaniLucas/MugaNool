@@ -26,6 +26,8 @@
     
     <section id="my_section">
     
+    <div class="alert alert-danger" role="alert" style="margin-top:3%;font-size:16px;display:none;" id="error1_alert" align="center"></div>
+    
     <div class="row">
       
       <div class="col-md-8">
@@ -34,28 +36,29 @@
       
       <div class="col-md-4">
       
-      <form role="form" name="signupform" class="" style="margin-top:20%;margin-right:0%;width:100%;" onSubmit="return false;">
+      
+      <form role="form" name="signupform" class="" style="margin-top:15%;margin-right:0%;width:100%;" onSubmit="return false;">
       	<h3 style="color:orange;"> Signup for முகநூல் now.... </h3>
         <hr/>
          
           <div class="form-group">
             <input type="text" class="form-control" id="User_Name" placeholder="Enter User Name" maxlength="32" onBlur="checkUserName();" onFocus="emptyDivElement('unamestatus')" >
-            <span id="unamestatus" style="display:none;color:red;" class="validate"></span>
+            <span id="unamestatus" style="display:none;color:red;" 	 class="bg-info"></span>
           </div>
          
           <div class="form-group">
             <input type="email" class="form-control" id="Email" placeholder="Enter Email Address" maxlength="255" onBlur="checkEmail();" onFocus="emptyDivElement('emailstatus')" >
-            <span id="emailstatus" style="display:none;color:red;" class="validate"></span>
+            <span id="emailstatus" style="display:none;color:red;" class="bg-info"></span>
           </div>
          
           <div class="form-group">
             <input type="password" class="form-control" id="Password" placeholder="Enter a Password" maxlength="255" onKeyUp="passwordStrength()" onBlur="passwordcheck();">
-            <span id="passstatus" style="display:none;color:red;" class="validate"></span>
+            <span id="passstatus" style="display:none;color:red;" class="bg-info"></span>
           </div>
          
           <div class="form-group">
             <input type="password" class="form-control" id="Confirm_Password" placeholder="Confirm your Password" maxlength="255" onKeyUp="passwordcheck();" onBlur="passwordcheck();">
-            <span id="conpassstatus" style="display:none;color:red;" class="validate"></span>
+            <span id="conpassstatus" style="display:none;color:red;" class="bg-info"></span>
           </div>
          
             <div class="form-group">
@@ -306,13 +309,13 @@
                     <option value="Zambia">Zambia</option>
                     <option value="Zimbabwe">Zimbabwe</option>
                 </select>
-             <span id="countrystatus" style="display:none;color:red;" class="validate"></span>
+             <span id="countrystatus" style="display:none;color:red;" class="bg-info"></span>
              </div>
            
            <div class="form-group">
             <label for="Birthday" style="font-weight:bold;">Birthday</label>&nbsp;&nbsp;
             <input type="date" class="form-control" id="Birthday" >
-            <span id="Birthdaystatus" style="display:none;color:red;" class="validate"></span>
+            <span id="Birthdaystatus" style="display:none;color:red;" class="bg-info"></span>
          
           </div>
             <div class="form-group">
@@ -322,7 +325,7 @@
                     <option value="m">male</option>
                     <option value="f">female</option>
                </select>
-               <span id="genstatus" style="display:none;color:red;" class="validate"></span>
+               <span id="genstatus" style="display:none;color:red;" class="bg-info"></span>
              </div>
          
           <div class="form-group">
@@ -332,11 +335,8 @@
           <div class="form-group" align="left">
             <button type="submit" class="btn btn-success" id="signupSubmit" onClick="signup()" >Signup</button>
           </div>
-    
         </form>
-    
       </div>
     </div>
     
-                  
 <?php include_once('.\templates\footer_tem.php'); ?>
