@@ -96,6 +96,10 @@ if(isset($_POST["u"])){
 		
 	$sql1 = "INSERT INTO `users`(`username`, `email`, `password`, `gender`, `counry`, `signup`, `lastlogin`,`ip`,`avatar`) VALUES ('$u','$e','$hashP','$g','$c',NOW(),NOW(),'$ip','$img')";
 	$query1 = mysqli_query($db_conx,$sql1);
+	
+	if(!file_exists("user_data/$u")){
+	mkdir("user_data/$u");
+	}
 	echo  "signup_success";
 	exit();
 	}
