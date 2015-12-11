@@ -46,7 +46,19 @@ if(isset($_POST["u"])){
 	$c=$_POST['c'];
 	$b=$_POST['b'];
 	
+	//sanetizing username, email address and password
+	//preg_replace("regular expression","replacement","variable to be looked");
+	$u = preg_replace('#[^a-z0-9]#i','',$u);
+	
+	//mysqli_real_escape_string() will treat special characters as string
+	$e = mysqli_real_escape_string($db_conx,$e);
+	
+	//hasing password using md5 encription techinique, but crypt() is always the better choice when encrypting
 	$hashP = md5($p);
+	
+	//getenv or $_SERVER['REMOTE_ADDR'] to get ip address of the visitor
+	//$ip = getenv('REMOTE_ADDR');
+	$ip = preg_replace('#[^0-9.]#','',getenv('REMOTE_ADDR'));
 	
 	$sql2 = "SELECT id FROM users WHERE username='$u' LIMIT 1";	
 	
@@ -70,8 +82,19 @@ if(isset($_POST["u"])){
 	}else if(strlen($u)<3){
 		echo 'username should have atleast 3 characters and atmost 32 characters!';
 		exit();
-	}else{
-	$sql1 = "INSERT INTO `users`(`username`, `email`, `password`, `gender`, `counry`, `signup`, `lastlogin`) VALUES ('$u','$e','$hashP','$g','$c',NOW(),NOW())";
+	}else if(is_numeric($u[0])){
+		echo 'username cannot begin with numbers';
+		exit();
+	}
+	else{
+		
+		if($g=='m'){
+		$img = mysqli_real_escape_string($db_conx,"img/avatar_male.png");	
+		}else{
+		$img = mysqli_real_escape_string($db_conx,"img/avatar_female.png");	
+		}
+		
+	$sql1 = "INSERT INTO `users`(`username`, `email`, `password`, `gender`, `counry`, `signup`, `lastlogin`,`ip`,`avatar`) VALUES ('$u','$e','$hashP','$g','$c',NOW(),NOW(),'$ip','$img')";
 	$query1 = mysqli_query($db_conx,$sql1);
 	echo  "signup_success";
 	exit();
