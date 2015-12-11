@@ -7,6 +7,7 @@
     <title> முக நூல் </title>
     <link rel="shortcut icon" href="http://localhost/SocialNetworkingApp/img/favicon.ico">
     <link href="http://localhost/SocialNetworkingApp/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost/SocialNetworkingApp/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://localhost/SocialNetworkingApp/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
   	 <link href="http://localhost/SocialNetworkingApp/style/main.css" rel="stylesheet">
      <script type="text/javascript" src="../script/ajax.js"></script>

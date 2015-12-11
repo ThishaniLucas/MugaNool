@@ -94,7 +94,7 @@ if(isset($_POST["u"])){
 		$img = mysqli_real_escape_string($db_conx,"img/avatar_female.png");	
 		}
 		
-	$sql1 = "INSERT INTO `users`(`username`, `email`, `password`, `gender`, `counry`, `signup`, `lastlogin`,`ip`,`avatar`) VALUES ('$u','$e','$hashP','$g','$c',NOW(),NOW(),'$ip','$img')";
+	$sql1 = "INSERT INTO `users`(`username`, `email`, `password`, `gender`, `counry`, `signup`, `lastlogin`,`ip`,`avatar`,`birthday`) VALUES ('$u','$e','$hashP','$g','$c',NOW(),NOW(),'$ip','$img','$b')";
 	$query1 = mysqli_query($db_conx,$sql1);
 	
 	if(!file_exists("user_data/$u")){

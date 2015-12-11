@@ -4,7 +4,7 @@
 
 <?php 
 $u = $_GET["u"];
-$sql ="SELECT avatar,email,gender,website,counry FROM users WHERE username='$u'";
+$sql ="SELECT avatar,email,gender,website,counry,birthday FROM users WHERE username='$u'";
 $query=mysqli_query($db_conx,$sql);
 if(mysqli_num_rows($query)<1){
 echo '<h1 style="color:orange;">no such record!</h1>';
@@ -20,6 +20,7 @@ $email = $row[1];
 $gender = $row[2];
 $website = $row[3];
 $country = $row[4];
+$birthday = $row[5];
 ?> 
 <div class="row" id="profile" style="margin-top:3%;">
   <div class="col-md-4">
@@ -55,42 +56,29 @@ $country = $row[4];
 		&nbsp;<?php echo $u; ?></div><hr />
         <div title="email"><span class="glyphicon glyphicon-envelope"></span>
 		&nbsp;<?php echo $email; ?></div><hr />
-        <div title="gender"><span class="glyphicon glyphicon-user"></span>
-		&nbsp;<?php if($gender=='m'){echo "male";}else{ echo "female"; } ?></div><hr />
+        <div title="gender"><?php if($gender=='m'){echo '<i class="fa fa-male"></i>&nbsp;&nbsp;&nbsp;male';}else{ echo '<i class="fa fa-female"></i>&nbsp;&nbsp;female'; } ?></div><hr />
         <div title="website"><span class="glyphicon glyphicon-globe"></span>
 		&nbsp;
 		<?php if($website==""){echo "none";}else{ echo $website; }?></div><hr />
         <div title="country"><span class="glyphicon glyphicon-flag"></span>
-		&nbsp;<?php echo $country; ?></div>
+		&nbsp;<?php echo $country; ?></div><hr />
+        <div title="birthday"><i class="fa fa-birthday-cake"></i></span>
+		&nbsp;<?php echo $birthday; ?></div>
     </div>
      
   </div>
   
 
-  <div class="col-md-7 well" >
+  <div class="col-md-7" >
+ 
+ <?php for($i=0;$i<50;$i++) { ?>
   	<div class="jumbotron">
-      <h1>Hello, world!</h1>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button"><span class="glyphicon glyphicon-heart"></span> </a>
+      <h1 style="padding:5%;">Hello, world!</h1>
+      <p style="padding:5%;"><a class="btn btn-primary btn-lg" href="#" role="button"><span class="glyphicon glyphicon-heart"></span> </a>
       <a class="btn btn-primary btn-lg" href="#" role="button"></span> <span class="glyphicon glyphicon-comment"></span></a></p>
     </div>
     
-    <div class="jumbotron">
-      <h1>Hello, world!</h1>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button"><span class="glyphicon glyphicon-heart"></span> </a>
-      <a class="btn btn-primary btn-lg" href="#" role="button"></span> <span class="glyphicon glyphicon-comment"></span></a></p>
-    </div>
-
-<div class="jumbotron">
-      <h1>Hello, world!</h1>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button"><span class="glyphicon glyphicon-heart"></span> </a>
-      <a class="btn btn-primary btn-lg" href="#" role="button"></span> <span class="glyphicon glyphicon-comment"></span></a></p>
-    </div>
-    
-    <div class="jumbotron">
-      <h1>Hello, world!</h1>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button"><span class="glyphicon glyphicon-heart"></span> </a>
-      <a class="btn btn-primary btn-lg" href="#" role="button"></span> <span class="glyphicon glyphicon-comment"></span></a></p>
-    </div>
+<?php } ?>
 
  </div>
  
