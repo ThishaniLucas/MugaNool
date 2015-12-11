@@ -21,8 +21,8 @@ $gender = $row[1];
 
 <div align="center"><img src="img/logo.gif" /></div>
 <div id="signup_message" class="well" style="margin-top:1%;font-size:16px;" >
-Thank you for signing up<span style="color:#DF1619;"> <?php if($gender=="m"){ echo "Mr. ";}
+Thank you for activating you account<span style="color:#DF1619;"> <?php if($gender=="m"){ echo "Mr. ";}
 else{ echo "Ms. "; }
- ?><?php echo $u; ?>.</span> before you loggin to <span style="color:#EF830A;">muganool</span>, activate your account by clicking on the activation link which is provided in a mail to your email. a mail is already send to <span style="color:#DF1619;"><?php echo $email; ?></span>, please click on the link to activate your account. then you can join millions of people who are in muganool.check your inbox or junk for our mail.<br /> <br /><span>Thank you,<br /> <span style="color:#EF830A;">Muganool team</span></span>
+ ?><?php echo $u; ?>.</span> now you loggin to <span style="color:#EF830A;">muganool</span> with your username or email and with your password, click the link to loggin.<a href="signup.php" style="color:orange;">click to login</a> <br /> <br /><span>Thank you,<br /> <span style="color:#EF830A;">Muganool team</span></span>
 </div>
 <?php include_once('.\templates\footer_tem.php'); ?>

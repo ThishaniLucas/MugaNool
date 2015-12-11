@@ -144,7 +144,7 @@ function signup(){
 			ajax.onreadystatechange = function(){
 			if(ajaxReturn(ajax)==true){
 					if(ajax.responseText == "signup_success"){
-							window.location="http://localhost/SocialNetworkingApp/profile.php?u="+u.value;
+							window.location="http://localhost/SocialNetworkingApp/signup_message.php?u="+u.value;
 							
 					}else{
 							window.scrollTo(0,0);

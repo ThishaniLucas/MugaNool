@@ -58,7 +58,7 @@ if(isset($_POST["u"])){
 	
 	//getenv or $_SERVER['REMOTE_ADDR'] to get ip address of the visitor
 	//$ip = getenv('REMOTE_ADDR');
-	$ip = preg_replace('#[^0-9.]#','',getenv('REMOTE_ADDR'));
+	$ip = preg_replace('#[^0-9.:]#','',getenv('REMOTE_ADDR'));
 	
 	$sql2 = "SELECT id FROM users WHERE username='$u' LIMIT 1";	
 	
@@ -100,7 +100,27 @@ if(isset($_POST["u"])){
 	if(!file_exists("user_data/$u")){
 	mkdir("user_data/$u");
 	}
-	echo  "signup_success";
+	
+	$to = $e;
+	$from = "charlesrajendran44@gmail.com";
+	$subject="Muganool Activation";
+	
+	$message='<!DOCTYPE html><html lang="en"><body style="background-color:#F3B6F0"><div align="center" style="font-size:18px;color:#F5B369">Dear '.$u .'<br>Welcome to Muganool. <br />Please click the link below to confirm your email address and activate your account. <br /><br /><a href="http://localhost/SocialNetworkingApp/activation.php?u='.$u.'">Activate Account</a><br /><br />&copy;Muganool Team</div></body>';
+	
+	$header ='From: charlesrajendran44@gmail.com' . "\r\n" .
+            'MIME-Version: 1.0' . "\r\n" .
+            'Content-type: text/html; charset=utf-8';
+	
+	//ini_set("SMTP","ssl://smtp.gmail.com");
+	//ini_set("smtp_port","465");
+	ini_set("sendmail_from","muganooluom@gmail.com");
+	
+	if(mail($to,$subject,$message,$header)){
+		echo  "signup_success";
+	}else{
+		echo "mail not send to ".$to;	
+	}
+	
 	exit();
 	}
 	}
