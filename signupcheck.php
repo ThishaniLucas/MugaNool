@@ -48,10 +48,34 @@ if(isset($_POST["u"])){
 	
 	$hashP = md5($p);
 	
-	$sql1 = "INSERT INTO `users`(`username`, `email`, `password`, `gender`, `counry`, `signup`, `lastlogin`) VALUES ('$u','$e','$hashP','$g','$c',NOW(),NOW())";
+	$sql2 = "SELECT id FROM users WHERE username='$u' LIMIT 1";	
 	
+	$query2 = mysqli_query($db_conx,$sql2);
+	$row_num2 = mysqli_num_rows($query2);
+	
+	$sql3 = "SELECT id FROM users WHERE email='$e' LIMIT 1";	
+	
+	$query3 = mysqli_query($db_conx,$sql3);
+	$row_num3 = mysqli_num_rows($query3);
+	
+	if($row_num2>0){
+		echo 'username is already exist, try another username!';
+		exit();
+	}else if($row_num3>0){
+		echo 'email is already exist, try another username!';
+		exit();
+	}else if(strlen($p)<8){
+		echo 'password doesn\'t have required length!, atleast it should have 8 characters';
+		exit();
+	}else if(strlen($u)<3){
+		echo 'username should have atleast 3 characters and atmost 32 characters!';
+		exit();
+	}else{
+	$sql1 = "INSERT INTO `users`(`username`, `email`, `password`, `gender`, `counry`, `signup`, `lastlogin`) VALUES ('$u','$e','$hashP','$g','$c',NOW(),NOW())";
 	$query1 = mysqli_query($db_conx,$sql1);
-	echo  "Hi '$u' Hi '$e' Hi '$c' Hi '$b' Hi '$p' Hi '$g' done";
+	echo  "signup_success";
+	exit();
+	}
 	}
 
 ?>

@@ -42,17 +42,17 @@
         <hr/>
          
           <div class="form-group">
-            <input type="text" class="form-control" id="User_Name" placeholder="Enter User Name" maxlength="32" onKeyUp="checkUserName();" onFocus="emptyDivElement('unamestatus')" >
+            <input type="text" class="form-control" id="User_Name" placeholder="Enter User Name" maxlength="32" onKeyUp="checkUserName();" onFocus="emptyDivElement('unamestatus')" onBlur="checkUserName();" >
             <span id="unamestatus" style="display:none;color:red;" 	class="bg-success"></span>
           </div>
          
           <div class="form-group">
-            <input type="email" class="form-control" id="Email" placeholder="Enter Email Address" maxlength="255" onKeyUp="checkEmail();" onFocus="emptyDivElement('emailstatus')" >
+            <input type="email" class="form-control" id="Email" placeholder="Enter Email Address" maxlength="255" onKeyUp="checkEmail();" onFocus="emptyDivElement('emailstatus')" onBlur="checkEmail();">
             <span id="emailstatus" style="display:none;color:red;" class="bg-info"></span>
           </div>
          
           <div class="form-group">
-            <input type="password" class="form-control" id="Password" placeholder="Enter a Password" maxlength="255" onKeyUp="passwordStrength()" onBlur="passwordcheck();">
+            <input type="password" class="form-control" id="Password" placeholder="Enter a Password" maxlength="255" onKeyUp="passwordStrength();passwordcheck" onBlur="passwordcheck();passwordcheck">
             <span id="passstatus" style="display:none;color:red;" class="bg-info"></span>
           </div>
          

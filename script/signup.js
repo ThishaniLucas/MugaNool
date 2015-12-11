@@ -125,12 +125,14 @@ function signup(){
 		if(u.value=="" || e.value=="" || p.value=="" || cp.value=="" || g.value=="" || c.value=="" || b.value==""){
 			emptyTfElement('Password');
 			emptyTfElement('Confirm_Password');	
+			window.scrollTo(0,0);
 			document.getElementById("error1_alert").innerHTML ="Error on login, Fillout all data!!!";
 			document.getElementById("error1_alert").style.display="block";
 			}
 		else if(p.value != cp.value){
 			emptyTfElement('Password');
 			emptyTfElement('Confirm_Password');	
+			window.scrollTo(0,0);
 			document.getElementById("error1_alert").innerHTML ="Error on login, Password Confirmation failed!!!";
 			document.getElementById("error1_alert").style.display="block";
 			}
@@ -141,12 +143,15 @@ function signup(){
 			var ajax = ajaxObj("POST","http://localhost/SocialNetworkingApp/signupcheck.php");
 			ajax.onreadystatechange = function(){
 			if(ajaxReturn(ajax)==true){
-					if(ajax.responseText != "signup_success"){
+					if(ajax.responseText == "signup_success"){
+							window.location="http://localhost/SocialNetworkingApp/index.php";
 							
+					}else{
+							window.scrollTo(0,0);
 							document.getElementById("error1_alert").innerHTML =ajax.responseText;
 							document.getElementById("error1_alert").style.display="block";
-					}else{
-							alert(ajax.responseText);
+							but.disabled = false;
+							but.innerHTML="Signup";
 					}
 				}
 			}
