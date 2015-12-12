@@ -5,6 +5,7 @@ if(isset($_SESSION["user_logged"]) || isset($_COOKIE["user_logged"])){
 	exit();
 	}
 ?>
+
 <?php include_once('.\templates\header_tem.php'); ?>
 <script type="text/javascript" src="script/ajax.js"></script>
 <script type="text/javascript" src="script/signup.js"></script>
@@ -26,7 +27,7 @@ if(isset($_SESSION["user_logged"]) || isset($_COOKIE["user_logged"])){
                   <input type="checkbox" id="chkbox" value="clicked"> <span style="font-size:12px;">Remember me(keep you logged in for 1 month)</span>
                 </label>
               </div>
-              <button class="btn btn-link" style="color:#F56E06;"><span style="font-size:12px;">Forgot your password?</span></button>
+              <button class="btn btn-link" style="color:#F56E06;" data-toggle="modal" data-target="#forgotPassword"><span style="font-size:12px;">Forgot your password?</span></button>                       
         </form>
     </ul>
     
@@ -34,6 +35,28 @@ if(isset($_SESSION["user_logged"]) || isset($_COOKIE["user_logged"])){
     
     <section id="my_section">
     
+             <div class="modal fade" id="forgotPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header bg-primary" >
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Forgot Password ?</h4>
+                  </div>
+                  <div class="modal-body" id="fp_modal_body">
+                    <form name="forgot_password" id="forgot_password" action="forgot_pass.php" method="post">
+                    <label style="color:#3299EF">Type your email address hear, then we will send a mail to resolve your problem</label>
+                      <div class="form-group">
+                        <input type="email" style="color:#ED4447" class="form-control" id="forgot_Password_email" placeholder="enter your email address" maxlength="255" onKeyUp="" onBlur="" onClick="" name="forgot_Password_email">
+                        </div>
+                      <hr />
+                      <div align="right"> <button type="submit" class="btn btn-primary">Send Mail</button></div>
+                     
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
     <div class="alert alert-danger" role="alert" style="margin-top:5%;font-size:16px;display:none;" id="error1_alert" align="center"></div>
     
     <div class="row">
