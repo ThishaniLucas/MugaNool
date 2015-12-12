@@ -5,6 +5,7 @@ include_once('.\templates\db_conx.php');
 
 $uoe = $_POST["uoe"];
 $p = $_POST["p"];
+$ip = preg_replace('#[^0-9.:]#','',getenv('REMOTE_ADDR'));
 $hashp = md5($p);
 
 $sql = "SELECT `username`, `email`, `password`, `activated` FROM `users` WHERE `username`='$uoe' OR `email`='$uoe' LIMIT 1";
@@ -31,6 +32,12 @@ else if($dp!=$hashp){
 	}
 else{
 	$_SESSION["user_logged"]=$du;
+	$_SESSION["user_logged_email"]=$de;
+	$_SESSION["user_logged_password"]=$dp;
+	
+	$sqlu = "UPDATE users set ip='$ip',lastlogin=NOW() WHERE username='$du'";
+	$queryu = mysqli_query($db_conx,$sqlu);
+	
 	echo $du;
 	//header("Location: http://localhost/SocialNetworkingApp/profile.php?u=$du");
 	exit();

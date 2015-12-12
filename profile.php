@@ -1,6 +1,16 @@
+<?php 
+session_start();
+if(!isset($_SESSION['user_logged'])){
+	header("Location: http://localhost/SocialNetworkingApp/signup.php");
+	exit();
+	}
+?>
+
 <?php include_once('.\templates\header_tem.php'); ?>
 <?php include_once('.\templates\menu_item.php'); ?>
-<?php include('.\templates\db_conx.php'); ?>
+<?php include('.\templates\db_conx.php');
+
+ ?>
 
 <?php 
 $u = $_GET["u"];
@@ -22,6 +32,10 @@ $website = $row[3];
 $country = $row[4];
 $birthday = $row[5];
 ?> 
+
+<script type="text/javascript">
+document.getElementById('profile_menu_right').className="active";
+</script>
 <div class="row" id="profile" style="margin-top:3%;">
   <div class="col-md-4">
   	 <a class="thumbnail">

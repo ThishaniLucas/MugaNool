@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="width:94%;">
               <form class="navbar-form navbar-left" role="search" style="padding:0px;width:50%;">
                 <div class="form-group" style="padding:0px;width:100%;">
@@ -56,11 +57,11 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Profile	"><span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"> Profile</a></li>
+                    <li id="profile_menu_right"><a href="http://localhost/SocialNetworkingApp/profile.php?u=<?php echo $_SESSION['user_logged']; ?>"><span class="glyphicon glyphicon-user" > Profile</a></li>
                      <li class="divider"></li>
                     <li><a href="#"><span class="glyphicon glyphicon-cog"> Settings</a></li>
                      <li class="divider"></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-off"> Logout</a></li>
+                    <li id="logout_menu_right"><a href="http://localhost/SocialNetworkingApp/logout.php"><span class="glyphicon glyphicon-off"> Logout</a></li>
                   </ul>
                 </li>
               </ul>
