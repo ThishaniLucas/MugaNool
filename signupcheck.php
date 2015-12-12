@@ -48,7 +48,7 @@ if(isset($_POST["u"])){
 	
 	//sanetizing username, email address and password
 	//preg_replace("regular expression","replacement","variable to be looked");
-	$u = preg_replace('#[^a-z0-9]#i','',$u);
+	$u = preg_replace('#[^a-z 0-9]#i','',$u);
 	
 	//mysqli_real_escape_string() will treat special characters as string
 	$e = mysqli_real_escape_string($db_conx,$e);
@@ -59,6 +59,19 @@ if(isset($_POST["u"])){
 	//getenv or $_SERVER['REMOTE_ADDR'] to get ip address of the visitor
 	//$ip = getenv('REMOTE_ADDR');
 	$ip = preg_replace('#[^0-9.:]#','',getenv('REMOTE_ADDR'));
+	
+	//age should be morethan 16
+	$bd = explode('-',$b);
+	$year = $bd[0];
+	$month = $bd[1];
+	$date = $bd[2];
+	
+	//$today = date("Y-m-d");
+	$cur_date = date("d");
+	$cur_month = date("m");
+	$cur_year = date("Y");	
+	
+	$age = $cur_year - $year;
 	
 	$sql2 = "SELECT id FROM users WHERE username='$u' LIMIT 1";	
 	
@@ -85,6 +98,10 @@ if(isset($_POST["u"])){
 	}else if(is_numeric($u[0])){
 		echo 'username cannot begin with numbers';
 		exit();
+	}else if($age<16){
+		//echo $date.' '.$month.' '.$year.' '.$cur_date.' '.$cur_month.' '.$cur_year.'   '.$age;
+		echo 'your age should be more than 16 to create an account!';
+		exit();
 	}
 	else{
 		
@@ -105,7 +122,7 @@ if(isset($_POST["u"])){
 	$from = "charlesrajendran44@gmail.com";
 	$subject="Muganool Activation";
 	
-	$message='<!DOCTYPE html><html lang="en"><body style="background-color:#F3B6F0"><div align="center" style="font-size:18px;color:#F5B369">Dear '.$u .'<br>Welcome to Muganool. <br />Please click the link below to confirm your email address and activate your account. <br /><br /><a href="http://localhost/SocialNetworkingApp/activation.php?u='.$u.'">Activate Account</a><br /><br />&copy;Muganool Team</div></body>';
+	$message='<!DOCTYPE html><html lang="en"><body style="background-color:#ffffff"><div align="center" style="font-size:18px;color:#ff0000">Dear '.$u .'<br>Welcome to Muganool. <br />Please click the link below to confirm your email address and activate your account. <br /><br /><a href="http://localhost/SocialNetworkingApp/activation.php?u='.$u.'">Activate Account</a><br /><br />&copy;Muganool Team</div></body>';
 	
 	$header ='From: charlesrajendran44@gmail.com' . "\r\n" .
             'MIME-Version: 1.0' . "\r\n" .
@@ -121,6 +138,8 @@ if(isset($_POST["u"])){
 		echo "mail not send to ".$to;	
 	}
 	
+	
+	//echo $date.' '.$month.' '.$year.' '.$cur_date.' '.$cur_month.' '.$cur_year.'   '.$age;
 	exit();
 	}
 	}

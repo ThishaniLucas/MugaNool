@@ -6,7 +6,7 @@ function restrict(e){
 		rx = /[' "]/gi;//rx = ',",space
 		}
 	else if(e == "User_Name"){
-		rx = /[^a-z0-9]/gi; // rx = characters other than 0-9,a-z-,A-Z
+		rx = /[^a-z 0-9]/gi; // rx = characters other than 0-9,a-z-,A-Z
 		}
 		
 		tf.value = tf.value.replace(rx,""); // will replace charctrs in rx with null value
@@ -20,6 +20,22 @@ function emptyDivElement(e){
 function emptyTfElement(e){
 	document.getElementById(e).value="";
 	}
+	
+function validate_email(){
+		var e = document.getElementById("Email").value;
+					
+					if(e.search(/@/i)==-1){
+						es.innerHTML = "not seems like a email address!";
+						es.style.display="inline";
+						emptyTfElement('Email');
+						
+					}
+					else if(e.search(/.com/i)==-1){
+						es.innerHTML = "not seems like a email address!";
+						es.style.display="inline";
+						emptyTfElement('Email');
+					}
+}
 
 function checkEmail(){
 	
@@ -31,8 +47,27 @@ function checkEmail(){
 		var ajax = ajaxObj("POST","http://localhost/SocialNetworkingApp/signupcheck.php");
 		ajax.onreadystatechange = function(){
 			if(ajaxReturn(ajax)==true){
+					if(e.search(/@/i)==-1){
+						es.innerHTML = "not seems like a email address!";
+						es.style.display="inline";
+					}
+					else if(e.search(/.com/i)==-1){
+						
+						if(e.search(/msdn.cn/i)==-1)
+						{
+						es.innerHTML = "not seems like a email address!";
+						es.style.display="inline";
+						}
+						else
+						{
+							es.innerHTML = ajax.responseText;
+							es.style.display="inline";
+						}
+					}
+					else{
 					es.innerHTML = ajax.responseText;
 					es.style.display="inline";
+					}
 				}
 			}
 			ajax.send("emailcheck="+e);
@@ -138,7 +173,7 @@ function signup(){
 			}
 		else{
 			but.disabled = true;
-			but.innerHTML="please wait..."
+			but.innerHTML="please wait...";
 			
 			var ajax = ajaxObj("POST","http://localhost/SocialNetworkingApp/signupcheck.php");
 			ajax.onreadystatechange = function(){
