@@ -1,7 +1,21 @@
 <?php include_once('.\templates\header_tem.php'); ?>
+<?php 
+	if(!isset($_SESSION['user_logged'])){
+	header("Location: http://localhost/SocialNetworkingApp/signup.php");
+	exit();
+	}
+?>
+
 <?php include_once('.\templates\menu_item.php'); ?>
+
 <?php include('.\templates\db_conx.php'); ?>
 
+<?php 
+	session_start();
+	$u_ses = $_SESSION['user_logged'];
+	$sqln = "UPDATE users SET notescheck=NOW() WHERE username='$u_ses'";
+	$queryn = mysqli_query($db_conx,$sqln);
+?>
 <?php 
 $u = $_GET["u"];
 $sql ="SELECT avatar FROM users WHERE username='$u' LIMIT 1";

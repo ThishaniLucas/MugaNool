@@ -3,8 +3,14 @@
 function logincheck(){
 	var EOU = document.getElementById('EOU');
 	var Password1 = document.getElementById('Password1');
+	var chkbox = document.getElementById('chkbox');
 	var login_button = document.getElementById('login_button');
 		//check for null
+	if(chkbox.checked){
+		chkbox.value = "ticked";
+	}else{
+		chkbox.value = "not ticket";
+	}
 	
 	
 	if(EOU.value=="" || Password1.value == ""){
@@ -27,7 +33,7 @@ function logincheck(){
 			}		
 		}
 		
-		ajax.send("uoe="+EOU.value+"&p="+Password1.value);
+		ajax.send("uoe="+EOU.value+"&p="+Password1.value+"&c="+chkbox.value);
 		
 	}
 }

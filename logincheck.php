@@ -5,6 +5,7 @@ include_once('.\templates\db_conx.php');
 
 $uoe = $_POST["uoe"];
 $p = $_POST["p"];
+$c = $_POST["c"];
 $ip = preg_replace('#[^0-9.:]#','',getenv('REMOTE_ADDR'));
 $hashp = md5($p);
 
@@ -34,6 +35,15 @@ else{
 	$_SESSION["user_logged"]=$du;
 	$_SESSION["user_logged_email"]=$de;
 	$_SESSION["user_logged_password"]=$dp;
+	
+	//setting cookie
+	//setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+	
+	if($c=="ticked"){
+	setcookie("user_logged",$du,time()+(86400*30),"/");
+	setcookie("user_logged_email",$de,time()+(86400*30),"/");
+	setcookie("user_logged_password",$dp,time()+(86400*30),"/");
+	}
 	
 	$sqlu = "UPDATE users set ip='$ip',lastlogin=NOW() WHERE username='$du'";
 	$queryu = mysqli_query($db_conx,$sqlu);

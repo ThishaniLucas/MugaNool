@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(isset($_SESSION["user_logged"])){
+if(isset($_SESSION["user_logged"]) || isset($_COOKIE["user_logged"])){
 	header('Location: http://localhost/SocialNetworkingApp/profile.php?u='.$_SESSION["user_logged"]);
 	exit();
 	}
@@ -23,7 +23,7 @@ if(isset($_SESSION["user_logged"])){
           	  <button type="submit" class="btn btn-warning" id="login_button" style="height:32px;" onClick="logincheck();">Login</button><br />
               <div class="checkbox" style="color:#F56E06;">
                 <label>
-                  <input type="checkbox"> <span style="font-size:12px;">Remember me(keep you logged in for 1 month)</span>
+                  <input type="checkbox" id="chkbox" value="clicked"> <span style="font-size:12px;">Remember me(keep you logged in for 1 month)</span>
                 </label>
               </div>
               <button class="btn btn-link" style="color:#F56E06;"><span style="font-size:12px;">Forgot your password?</span></button>

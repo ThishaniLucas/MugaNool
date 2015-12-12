@@ -1,9 +1,6 @@
 <?php 
 session_start();
-if(!isset($_SESSION['user_logged'])){
-	header("Location: http://localhost/SocialNetworkingApp/signup.php");
-	exit();
-	}
+include('.\templates\user_session_set.php');
 ?>
 
 <?php include_once('.\templates\header_tem.php'); ?>
