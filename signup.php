@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(isset($_SESSION["user_logged"])){
+	header('Location: http://localhost/SocialNetworkingApp/profile.php?u='.$_SESSION["user_logged"]);
+	exit();
+	}
+?>
 <?php include_once('.\templates\header_tem.php'); ?>
 <script type="text/javascript" src="script/ajax.js"></script>
 <script type="text/javascript" src="script/signup.js"></script>

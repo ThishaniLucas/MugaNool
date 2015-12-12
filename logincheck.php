@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 include_once('.\templates\db_conx.php'); 
 
 $uoe = $_POST["uoe"];
@@ -28,10 +30,10 @@ else if($dp!=$hashp){
 	exit();
 	}
 else{
+	$_SESSION["user_logged"]=$du;
 	echo $du;
 	//header("Location: http://localhost/SocialNetworkingApp/profile.php?u=$du");
 	exit();
 	}
-//echo $du.' '.$de.' '.$dp.' '.$da;
 
 ?>
