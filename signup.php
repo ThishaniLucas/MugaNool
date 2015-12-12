@@ -1,18 +1,19 @@
 <?php include_once('.\templates\header_tem.php'); ?>
 <script type="text/javascript" src="script/ajax.js"></script>
 <script type="text/javascript" src="script/signup.js"></script>
+<script type="text/javascript" src="script/login.js"></script>
 
     <ul class="nav navbar-nav navbar-right" style="margin:0.8%;">
          <form class="form-inline" role="form" onSubmit="return false;" autocomplete="on">
               <div class="form-group">
                 <label style="color:white">Email&nbsp;</label>
-                <input type="text" class="form-control" id="Email1" placeholder="Email" style="height:25px;">
+                <input type="text" class="form-control" id="EOU" placeholder="Email or Username" style="height:25px;">
               </div>
               <div class="form-group">
                 <label style="color:white"> &nbsp;&nbsp;Password&nbsp;</label>
                 <input type="password" class="form-control" id="Password1" placeholder="Password" style="height:25px;">&nbsp;
               </div>
-          	  <button type="submit" class="btn btn-warning" style="height:32px;">Login</button><br />
+          	  <button type="submit" class="btn btn-warning" id="login_button" style="height:32px;" onClick="logincheck();">Login</button><br />
               <div class="checkbox" style="color:#F56E06;">
                 <label>
                   <input type="checkbox"> <span style="font-size:12px;">Remember me(keep you logged in for 1 month)</span>
