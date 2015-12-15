@@ -1,3 +1,5 @@
+//alert("ajax");
+
 function ajaxObj(meth,url){
 	var x = new XMLHttpRequest();
 	x.open(meth,url,true);

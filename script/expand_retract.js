@@ -1,3 +1,5 @@
+//alert("expand and retract");
+
 function expand(e){
 	
 	//getting the element object
