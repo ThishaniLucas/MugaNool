@@ -22,7 +22,7 @@ $to = $e;
 	$from = "charlesrajendran44@gmail.com";
 	$subject="Muganool Activation";
 	
-	$message='<!DOCTYPE html><html lang="en"><body style="background-color:#ffffff"><div align="center" style="font-size:18px;color:#ff0000">Hello '.$u .',<br>as per your requirement you password will be changed to<br /><b>Password:&nbsp;'.$changed_password.'</b><br />Please click the link below to confirm your decision of changing password. <br /><br /><a href="http://localhost/SocialNetworkingApp/forgot_password_processing.php?e='.$e.'">Change Password</a><br /><br />&copy;Muganool Team</div></body>';
+	$message='<!DOCTYPE html><html lang="en"><body style="background-color:#ffffff"><div align="center" style="font-size:18px;color:#ff0000">Hello '.$u .',<br>as per your requirement you password will be changed to<br /><b>Password:&nbsp;'.$changed_password.'</b><br />Please click the link below to confirm your decision of changing password. <br /><br /><a href="http://localhost/SocialNetworkingApp/forgot_password_processing.php?e='.$e.'">Change Password</a><br />change your password soon as you logged in(make sure you have a secure password)<br /><br />&copy;Muganool Team</div></body>';
 	
 	$header ='From: charlesrajendran44@gmail.com' . "\r\n" .
             'MIME-Version: 1.0' . "\r\n" .

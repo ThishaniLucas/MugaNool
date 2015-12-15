@@ -1,14 +1,17 @@
 <?php 
 session_start();
 include('.\templates\user_session_set.php');
+if(isset($_GET["u"])==""){
+	header("Location: http://localhost/SocialNetworkingApp/profile.php?u=".$_SESSION["user_logged"]);	
+}
 ?>
 
-<?php include_once('.\templates\header_tem.php'); ?>
-<?php include_once('.\templates\menu_item.php'); ?>
+
 <?php include('.\templates\db_conx.php');
 
  ?>
-
+<?php include_once('.\templates\header_tem.php'); ?>
+<?php include_once('.\templates\menu_item.php'); ?>
 <?php 
 $u = $_GET["u"];
 $sql ="SELECT avatar,email,gender,website,counry,birthday FROM users WHERE username='$u'";
