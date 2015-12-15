@@ -61,6 +61,7 @@
                      <li class="divider"></li>
                     <li><a href="#"><span class="glyphicon glyphicon-cog"> Settings</a></li>
                      <li class="divider"></li>
+                     <li id="change_password_menu_right"><a href="http://localhost/SocialNetworkingApp/change_password.php"><span class="glyphicon glyphicon-lock"> Change_Password</a></li><li class="divider"></li>
                     <li id="logout_menu_right"><a href="http://localhost/SocialNetworkingApp/logout.php"><span class="glyphicon glyphicon-off"> Logout</a></li>
                   </ul>
                 </li>
