@@ -37,11 +37,13 @@ document.getElementById('profile_menu_right').className="active";
 </script>
 <div class="row" id="profile" style="margin-top:3%;">
   <div class="col-md-5">
-  	 <a class="thumbnail">
-      <img src="<?php echo $img; ?>" usemap="#exmap"/>
+  	 <a class="thumbnail" data-toggle="modal" data-target="#profilePicModal" href="" title="change profile picture">
+     <img src="<?php echo $img; ?>" />
+      <!-- 
+       <img src="<?php //echo $img; ?>" usemap="#exmap"/>
       <map name="exmap">
          <area shape="rect" coords="0,150,200,200" data-toggle="modal" data-target="#profilePicModal" alt="profile picture" title="change profile picture">
-      </map>
+      </map>-->
          </a>
      
      <div class="modal fade" id="profilePicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -52,13 +54,11 @@ document.getElementById('profile_menu_right').className="active";
             <h4 class="modal-title" id="myModalLabel">Change your profile picture</h4>
           </div>
           <div class="modal-body">
-          	<form name="pp">
-            <input type="file" />
+          	<form name="pp" action="pp_processing.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="pp_input" />
+            <hr />
+            <div align="right"><button type="submit" class="btn btn-primary" name="pp_submit">Save changes</button></div>  
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>

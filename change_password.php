@@ -9,6 +9,9 @@
 <?php include_once('.\templates\menu_item.php'); ?>
 
 <?php include('.\templates\db_conx.php'); ?>
+<script type="text/javascript">
+document.getElementById('change_password_menu_right').className="active";
+</script>
 <div align="center">
 <div class="well" style="margin-top: 3%;width:50%;" align="center">
 <div align="center"><img src="img/logo.gif" /></div>
