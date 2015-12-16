@@ -117,18 +117,51 @@ document.getElementById('profile_menu_right').className="active";
       <span id="<?php echo 'startof'.$currYear ?>"></span>
      
       <?php  $currYear--;$yearstart = '01-01-'.$currYear; } ?>
-  	<div class="jumbotron">
-      <h1 style="padding:5%;"><?php echo 'year start '.$yearstart.' update year '.$updatetime.' year '.$currYear  ?></h1>
-      <p style="padding:5%;"><a class="btn btn-primary btn-lg" href="#" role="button"><span class="glyphicon glyphicon-heart"></span> </a>
-      <a class="btn btn-primary btn-lg" href="#" role="button"></span> <span class="glyphicon glyphicon-comment"></span></a></p>
-    </div>
+        <div style="padding:0%" class="panel">
+                  <h4 align="left" style="margin:1%;" class="panel-heading"><img style="border:solid #2B66F0 2px;" src="<?php echo $updaterimage ?>" width="7%" height="7%" /><?php 
+                  echo ' by <a href="profile.php?u='.$updateuser.'" style="text-decoration:none;">'.$updateuser.'</a> on '.date('d M Y D',strtotime($updatetime)) ?></h4>
+                  <div class="panel-body"> 
+                  <h4 align="left" style="margin:1%"><?php echo $updatetext ?></h4><br />
+                  <img class="img-thumbnail" src="cp/Amazing Nature HD Wallpapers (6).jpg" />
+                  </div>
+                 <div>
+                 <h4 align="left" style="margin:2%;margin-left:5%"><a href=""><span class="fa fa-thumbs-o-up"></span></a>&nbsp;<?php echo $updatelikes ?>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
+                 </div>
+                   
+                </div>
     
 <?php } ?>
-	<span id="born"></span>
-	<div class="jumbotron">
-    	<div class="thumbnail" align="center" style="font-size:120px;color:#4CD1EC;"> <span class="fa fa-birthday-cake"></span> </div>
-      <h3 align="center" style="color:#FF8587"><?php echo $u ?> born on this day<br /><?php echo date('d M Y D',strtotime($birthday)) ?></h3>
-    </div>
+
+<?php 
+
+ 	$sqlsu = "SELECT signup FROM users WHERE username='$u'";
+	$querysu = mysqli_query($db_conx,$sqlsu);
+	
+	$row = mysqli_fetch_row($querysu);
+	$signupday = $row[0];
+	
+	$signuparray = explode('-',$signupday);
+	$signupyear = $signuparray[0];
+	$signpupmonth = $signuparray[1];
+	$signpupdate = $signuparray[2];
+	
+?>
+<span id="joint"></span>
+	 <div style="padding:0%" class="panel">
+     <h4 align="left" style="margin:1%;" class="panel-heading"><img style="border:solid #2B66F0 2px;" src="<?php echo $img ?>" width="7%" height="7%" />&nbsp;<?php echo date('d M Y D',strtotime($signupday)); ?></h4>
+            <div class="thumbnail" align="center" style="font-size:120px;color:#4CD1EC;"> <span class="fa fa-baby"></span> </div>
+      <h3 align="center" style="color:#FF8587"><?php echo $u ?> Joint Muganool on this day<br /><?php echo date('d M Y D',strtotime($signupdate)) ?></h3>            
+        </div>
+        
+        
+<span id="born"></span>
+
+        <div style="padding:0%" class="panel">
+             <h4 align="left" style="margin:1%;" class="panel-heading"><img style="border:solid #2B66F0 2px;" src="<?php echo $img ?>" width="7%" height="7%" />&nbsp;<?php echo date('d M Y D',strtotime($birthday)); ?></h4>
+             <div class="thumbnail" align="center" style="font-size:120px;color:#4CD1EC;"> <span class="fa fa-birthday-cake"></span> </div>
+      <h3 align="center" style="color:#FF8587"><?php echo $u ?> born on this day<br /><?php echo date('d M Y D',strtotime($birthday)) ?></h3>            
+        </div>
+	
 
  </div>
  
@@ -137,28 +170,22 @@ document.getElementById('profile_menu_right').className="active";
  
  <li role="presentation" class="active" onClick="return false;" onMouseDown="autoScrollTo('recent');resetScroller('recent');"><a href="#">Recent</a></li>
  <?php 
- 	$sqlsu = "SELECT signup FROM users WHERE username='$u'";
-	$querysu = mysqli_query($db_conx,$sqlsu);
-	
-	$row = mysqli_fetch_row($querysu);
-	$signupdate = $row[0];
-	
-	$signuparray = explode('-',$signupdate);
-	$signupyear = $signuparray[0];
-	$signpupmonth = $signuparray[1];
-	$signpupdate = $signuparray[2];
-	
 	$curYear = date('Y');
 	
 	$scroller = 0;
 	
-	while($curYear >= $signupyear){
+	while($curYear > $signupyear){
 		
  ?>
  
-  <li role="presentation" onClick="return false;" onMouseDown="autoScrollTo('<?php echo 'startof'.$curYear; ?>');resetScroller('<?php echo 'startof'.$curYear;$currYear--; ?>');"><a href="#" ><?php echo $curYear;$curYear--; ?></a></li>
+  <li role="presentation" onClick="return false;" onMouseDown="autoScrollTo('<?php echo 'startof'.$curYear; ?>');resetScroller('<?php echo 'startof'.$curYear; ?>');"><a href="#" ><?php echo $curYear;$curYear--; ?></a></li>
 
 <?php } ?>
+  
+    <li role="presentation" onClick="return false;" onMouseDown="autoScrollTo('joint');resetScroller('joint');"><a href="#"><?php 
+  	
+	echo $signupyear;
+   ?></a></li>
   
   <li role="presentation" onClick="return false;" onMouseDown="autoScrollTo('born');resetScroller('born');"><a href="#"><?php 
   	$bd = explode('-',$birthday);
