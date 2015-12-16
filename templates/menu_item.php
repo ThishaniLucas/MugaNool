@@ -8,7 +8,7 @@
               </form>
               
               <ul class="nav navbar-nav navbar-right">
-              	<li><a href="#" title="Home"><span class="glyphicon glyphicon-home"></span></a></li>
+              	<li><a href="http://localhost/SocialNetworkingApp/index.php" title="Home"><span class="glyphicon glyphicon-home"></span></a></li>
                 
                 <li class="dropdown"><a href="#" title="friend requests" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp;<span class="badge" style="font-size:9px;margin-bottom:3px;" id="request_count">4</span></a>
                 <ul class="dropdown-menu list-group" role="menu">
@@ -61,7 +61,7 @@
                      <li class="divider"></li>
                     <li><a href="#"><span class="glyphicon glyphicon-cog"> Settings</a></li>
                      <li class="divider"></li>
-                     <li id="change_password_menu_right"><a href="http://localhost/SocialNetworkingApp/change_password.php"><span class="glyphicon glyphicon-lock"> Change_Password</a></li><li class="divider"></li>
+                     <li id="change_password_menu_right"><a href="http://localhost/SocialNetworkingApp/change_password.php"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;&nbsp;Change password</a></li><li class="divider"></li>
                     <li id="logout_menu_right"><a href="http://localhost/SocialNetworkingApp/logout.php"><span class="glyphicon glyphicon-off"> Logout</a></li>
                   </ul>
                 </li>

@@ -83,3 +83,19 @@ CREATE TABLE notification(
   date_time datetime NOT NULL
   );
 
+create table textupdates(
+    id int not null auto_increment primary key,
+    username varchar(32) not null,
+    foreign key(username) references users(username),
+    textupdate text,
+    posted_at datetime not null,
+    likes int default 0
+    );
+    
+create table textupdatecomments(
+    id int not null auto_increment primary key,
+    commenter varchar(32) not null,
+    foreign key(commenter) references users(username),
+    updatecomment text,
+    commented_at datetime not null,
+    likes in

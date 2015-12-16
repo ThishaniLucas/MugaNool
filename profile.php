@@ -101,7 +101,7 @@ document.getElementById('profile_menu_right').className="active";
 	<span id="born"></span>
 	<div class="jumbotron">
     	<div class="thumbnail" align="center" style="font-size:120px;color:#4CD1EC;"> <span class="fa fa-birthday-cake"></span> </div>
-      <h3 align="center" style="color:#FF8587"><?php echo $u ?> born on this day<br /><?php echo $birthday ?></h3>
+      <h3 align="center" style="color:#FF8587"><?php echo $u ?> born on this day<br /><?php echo date('d M Y D',strtotime($birthday)) ?></h3>
     </div>
 
  </div>
@@ -134,7 +134,7 @@ document.getElementById('profile_menu_right').className="active";
 
 <?php } ?>
   
-  <li role="presentation" onClick="return false;" onMouseDown="autoScrollTo('born');"><a href="#"><?php 
+  <li role="presentation" onClick="return false;" onMouseDown="autoScrollTo('born');resetScroller('born');"><a href="#"><?php 
   	$bd = explode('-',$birthday);
 	$birth_year = $bd[0];
 	$month = $bd[1];
@@ -142,10 +142,12 @@ document.getElementById('profile_menu_right').className="active";
   	
 	echo $birth_year;
    ?></a></li>
+   
+   <li role="presentation" onClick="return false;" onMouseDown="autoScrollTo('empty');" style="display:none;"><a href="#"></a></li>
 </ul>
  </div>
  
 </div>
 
-
+<div id="empty" style="margin-top:200px;"></div>
 <?php include_once('.\templates\footer_tem.php'); ?>
