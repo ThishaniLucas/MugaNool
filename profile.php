@@ -84,15 +84,41 @@ document.getElementById('profile_menu_right').className="active";
 
   <div class="col-md-7" >
  	<span id="recent"></span>
- <?php for($i=0;$i<50;$i++) {
-	 	if($i%10 == 0){
+ <?php 
+ 	$sqlupdatesread = "SELECT `username`, `textupdate`, `posted_at`, `likes` FROM `textupdates` WHERE username='$u' ORDER BY `posted_at` DESC";
+	
+	$queryupdateread = mysqli_query($db_conx,$sqlupdatesread);
+	$currYear = date('Y');
+	$yearstart = '01-01-'.$currYear;
+	while($rowsupdate = mysqli_fetch_array($queryupdateread)){
+	
+	$updateuser = $rowsupdate[0];
+	$updatetext = $rowsupdate[1];
+	$updatetime = $rowsupdate[2];
+	$updatelikes = $rowsupdate[3];
+	 	 $sqlimgupdater = "SELECT avatar FROM users WHERE username='$updateuser'";
+		 $queryimgupdater = mysqli_query($db_conx,$sqlimgupdater);
+		 
+		 $rowimgupdater = mysqli_fetch_row($queryimgupdater);
+		 $updaterimage = $rowimgupdater[0];
+ 
+ 
+ 		$updatetimearray = explode('-',$updatetime);
+		$updatetimeyear = $updatetimearray[0];
+		$updatetimemonth = $updatetimearray[1];
+		$updatetimedate = $updatetimearray[2];
+ 				
+		
+		
+				if(strtotime($updatetime)<strtotime($yearstart)){
+					
 	  ?>
       
-      <span id="<?php echo 'group'.$i ?>"></span>
-      
-      <?php } ?>
+      <span id="<?php echo 'startof'.$currYear ?>"></span>
+     
+      <?php  $currYear--;$yearstart = '01-01-'.$currYear; } ?>
   	<div class="jumbotron">
-      <h1 style="padding:5%;">Hello, world!</h1>
+      <h1 style="padding:5%;"><?php echo 'year start '.$yearstart.' update year '.$updatetime.' year '.$currYear  ?></h1>
       <p style="padding:5%;"><a class="btn btn-primary btn-lg" href="#" role="button"><span class="glyphicon glyphicon-heart"></span> </a>
       <a class="btn btn-primary btn-lg" href="#" role="button"></span> <span class="glyphicon glyphicon-comment"></span></a></p>
     </div>
@@ -130,7 +156,7 @@ document.getElementById('profile_menu_right').className="active";
 		
  ?>
  
-  <li role="presentation" onClick="return false;" onMouseDown="autoScrollTo('<?php echo 'group'.$scroller; ?>');resetScroller('<?php echo 'group'.$scroller;$scroller+=10; ?>');"><a href="#" ><?php echo $curYear;$curYear--; ?></a></li>
+  <li role="presentation" onClick="return false;" onMouseDown="autoScrollTo('<?php echo 'startof'.$curYear; ?>');resetScroller('<?php echo 'startof'.$curYear;$currYear--; ?>');"><a href="#" ><?php echo $curYear;$curYear--; ?></a></li>
 
 <?php } ?>
   

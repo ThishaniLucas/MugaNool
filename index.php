@@ -76,16 +76,20 @@ $img = $row[0];
 	$updatetext = $rowsupdate[1];
 	$updatetime = $rowsupdate[2];
 	$updatelikes = $rowsupdate[3];
-	 
-	 
-	
+	 	 $sqlimgupdater = "SELECT avatar FROM users WHERE username='$updateuser'";
+		 $queryimgupdater = mysqli_query($db_conx,$sqlimgupdater);
+		 
+		 $rowimgupdater = mysqli_fetch_row($queryimgupdater);
+		 $updaterimage = $rowimgupdater[0];
+		 
+		
   ?>      
-        	<div style="border:solid 2px red;padding:0%" class="panel panel-default">
-              <h4 align="left" style="margin:1%;" class="panel-heading"><img src="<?php echo $img ?>" width="10%" height="10%" /><?php 
-			  echo ' posted by <a href="profile.php" style="text-decoration:none;">'.$updateuser.'</a> at '.date('d M Y D',strtotime($updatetime)) ?></h4>
+        	<div style="padding:0%" class="panel">
+              <h4 align="left" style="margin:1%;" class="panel-heading"><img style="border:solid #2B66F0 2px;" src="<?php echo $updaterimage ?>" width="7%" height="7%" /><?php 
+			  echo ' by <a href="profile.php?u='.$updateuser.'" style="text-decoration:none;">'.$updateuser.'</a> on '.date('d M Y D',strtotime($updatetime)) ?></h4>
               <div class="panel-body"> 
-              <h4 align="center" style="margin:1%"><?php echo $updatetext ?></h4><br />
-              <img class="img-thumbnail" src="img/logo_round2.gif" />
+              <h4 align="left" style="margin:1%"><?php echo $updatetext ?></h4><br />
+              <img class="img-thumbnail" src="cp/Amazing Nature HD Wallpapers (6).jpg" />
               </div>
              <div>
              <h4 align="left" style="margin:2%;margin-left:5%"><a href=""><span class="fa fa-thumbs-o-up"></span></a>&nbsp;<?php echo $updatelikes ?>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
@@ -97,8 +101,10 @@ $img = $row[0];
     
     </div>
     
-    <div class="col-md-3 well" style="margin-top:1%">
-    
+    <div class="col-md-3" style="margin-top:1%">
+    	<div class="well"></div>
+        <div class="well"></div>
+        <div class="well"></div>
     </div>
 </div>
 
