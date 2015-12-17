@@ -96,6 +96,7 @@ document.getElementById('profile_menu_right').className="active";
 	$updatetext = $rowsupdate[1];
 	$updatetime = $rowsupdate[2];
 	$updatelikes = $rowsupdate[3];
+	
 	 	 $sqlimgupdater = "SELECT avatar FROM users WHERE username='$updateuser'";
 		 $queryimgupdater = mysqli_query($db_conx,$sqlimgupdater);
 		 
@@ -120,20 +121,25 @@ document.getElementById('profile_menu_right').className="active";
 				$line .= '<br />';
 				$newupdatetext .= $line;
 			}
-		/*
-		$linktesthttps = explode("https://",$updatetext);
-		$linktesthttp = explode("http://",$updatetext);	
 		
-		if($linktesthttps[1]!==""){
+		$linktesthttps = explode("https://",$newupdatetext);
+		$linktesthttp = explode("http://",$newupdatetext);	
+		
+		$beforelinkstarthttps = $linktesthttps[0];
+		$beforelinkstarthttp = $linktesthttp[0];
+		
+		if($linktesthttps[1]!=""){
 			$domaintesthttps = explode("@@",$linktesthttps[1]);
+			$afterlink = $domaintesthttps[1];
 			$linktext = "https://".$domaintesthttps[0];
-			$newupdatetext='<a href='.$linktext.' target="_blank" style="text-decoration:none">'.$linktext.'</a>';
-		}else if($linktesthttp[1]!==""){	
-		$domaintesthttp = explode("@@",$linktesthttp[1]);
-		$linktext = "http://".$domaintesthttp[0];
-		$newupdatetext='<a href='.$linktext.' target="_blank" style="text-decoration:none">'.$linktext.'</a>';
+			$newupdatetext=$beforelinkstarthttps.'<a href="'.$linktext.'" target="_blank" style="text-decoration:none">'.$linktext.'</a>'.$afterlink;
+		}else if($linktesthttp[1]!=""){
+			$domaintesthttp = explode("@@",$linktesthttp[1]);
+			$afterlink = $domaintesthttp[1];
+			$linktext = "http://".$domaintesthttp[0];
+			$newupdatetext=$beforelinkstarthttp.'<a href="'.$linktext.'" target="_blank" style="text-decoration:none">'.$linktext.'</a>'.$afterlink;
 		}
-	*/
+	
 				if(strtotime($updatetime)<strtotime($yearstart)){
 					
 	  ?>

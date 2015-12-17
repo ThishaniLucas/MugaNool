@@ -86,21 +86,43 @@ $img = $row[0];
 		 $rowimgupdater = mysqli_fetch_row($queryimgupdater);
 		 $updaterimage = $rowimgupdater[0];
 	
-	$linktest = explode('://',$updatetext);
 	
-	
-	
-	if($linktest[0]=="https"||$linktest[0]=="http"){
-	$updatetext='<a href='.$updatetext.' target="_blank" style="text-decoration:none">'.$updatetext.'</a>';	
+		$newline=explode("\n",$updatetext);
 		
-	}
+		//$newline = explode(PHP_EOL,$updatetext);
+		//foreach to find text lines
 		
+		
+		
+		foreach($newline as $line){
+				//$line .= $line.'<br />';
+				$line .= '<br />';
+				$newupdatetext .= $line;
+			}
+		
+		$linktesthttps = explode("https://",$newupdatetext);
+		$linktesthttp = explode("http://",$newupdatetext);	
+		
+		$beforelinkstarthttps = $linktesthttps[0];
+		$beforelinkstarthttp = $linktesthttp[0];
+		
+		if($linktesthttps[1]!=""){
+			$domaintesthttps = explode("@@",$linktesthttps[1]);
+			$afterlink = $domaintesthttps[1];
+			$linktext = "https://".$domaintesthttps[0];
+			$newupdatetext=$beforelinkstarthttps.'<a href="'.$linktext.'" target="_blank" style="text-decoration:none">'.$linktext.'</a>'.$afterlink;
+		}else if($linktesthttp[1]!=""){
+			$domaintesthttp = explode("@@",$linktesthttp[1]);
+			$afterlink = $domaintesthttp[1];
+			$linktext = "http://".$domaintesthttp[0];
+			$newupdatetext=$beforelinkstarthttp.'<a href="'.$linktext.'" target="_blank" style="text-decoration:none">'.$linktext.'</a>'.$afterlink;
+		}
   ?>      
         	<div style="padding:0%" class="panel">
               <h4 align="left" style="margin:1%;" class="panel-heading"><img style="border:solid #2B66F0 2px;" src="<?php echo $updaterimage ?>" width="7%" height="7%" /><?php 
 			  echo ' by <a href="profile.php?u='.$updateuser.'" style="text-decoration:none;">'.$updateuser.'</a> on '.date('d M Y D',strtotime($updatetime)) ?></h4>
               <div class="panel-body"> 
-              <h4 align="left" style="margin:1%"><?php echo $updatetext ?></h4><br style="margin-bottom:0%;" />
+              <h4 align="left" style="margin:1%"><?php echo $newupdatetext;$newupdatetext="" ?></h4><br style="margin-bottom:0%;" />
               <img class="img-thumbnail" src="cp/Amazing Nature HD Wallpapers (6).jpg" style="display:none" />
               </div><hr style="margin:0%" />
              <div>
