@@ -149,8 +149,8 @@ document.getElementById('profile_menu_right').className="active";
 <span id="joint"></span>
 	 <div style="padding:0%" class="panel">
      <h4 align="left" style="margin:1%;" class="panel-heading"><img style="border:solid #2B66F0 2px;" src="<?php echo $img ?>" width="7%" height="7%" />&nbsp;<?php echo date('d M Y D',strtotime($signupday)); ?></h4>
-            <div class="thumbnail" align="center" style="font-size:120px;color:#4CD1EC;"> <span class="fa fa-baby"></span> </div>
-      <h3 align="center" style="color:#FF8587"><?php echo $u ?> Joint Muganool on this day<br /><?php echo date('d M Y D',strtotime($signupdate)) ?></h3>            
+            <div class="thumbnail" align="center" style="font-size:120px;color:#4CD1EC;"> <span class="fa fa-group"></span> </div>
+      <h3 align="center" style="color:#FF8587"><?php echo $u ?> Joint Muganool on this day<br /><?php echo date('d M Y D',strtotime($signupday)); ?></h3>            
         </div>
         
         
