@@ -122,8 +122,8 @@ document.getElementById('profile_menu_right').className="active";
                   echo ' by <a href="profile.php?u='.$updateuser.'" style="text-decoration:none;">'.$updateuser.'</a> on '.date('d M Y D',strtotime($updatetime)) ?></h4>
                   <div class="panel-body"> 
                   <h4 align="left" style="margin:1%"><?php echo $updatetext ?></h4><br />
-                  <img class="img-thumbnail" src="cp/Amazing Nature HD Wallpapers (6).jpg" />
-                  </div>
+                  <img class="img-thumbnail" src="cp/Amazing Nature HD Wallpapers (6).jpg" style="display:none" />
+                  </div><hr style="margin:0%" />
                  <div>
                  <h4 align="left" style="margin:2%;margin-left:5%"><a href=""><span class="fa fa-thumbs-o-up"></span></a>&nbsp;<?php echo $updatelikes ?>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
                  </div>
