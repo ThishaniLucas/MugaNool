@@ -44,6 +44,11 @@ $img = $row[0];
           	<div class="modal fade" id="textupdatemodal">
               <div class="modal-dialog">
                 <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <p class="modal-title" id="myModalLabel" style="color:#DC4C4E">add @@ signs at the end of like when you are adding a link</p>
+                    <p class="modal-title" id="myModalLabel" style="color:#DC4C4E">add !! signs infront when you are refering a person</p>
+                  </div>
                   <div class="modal-body">
                     <form name="textupdate" id="textupdate" onSubmit="return false;">
                       <div class="form-group">
@@ -80,7 +85,15 @@ $img = $row[0];
 		 
 		 $rowimgupdater = mysqli_fetch_row($queryimgupdater);
 		 $updaterimage = $rowimgupdater[0];
-		 
+	
+	$linktest = explode('://',$updatetext);
+	
+	
+	
+	if($linktest[0]=="https"||$linktest[0]=="http"){
+	$updatetext='<a href='.$updatetext.' target="_blank" style="text-decoration:none">'.$updatetext.'</a>';	
+		
+	}
 		
   ?>      
         	<div style="padding:0%" class="panel">
@@ -91,7 +104,7 @@ $img = $row[0];
               <img class="img-thumbnail" src="cp/Amazing Nature HD Wallpapers (6).jpg" style="display:none" />
               </div><hr style="margin:0%" />
              <div>
-             <h4 align="left" style="margin:2%;margin-left:5%"><a href=""><span class="fa fa-thumbs-o-up"></span></a>&nbsp;<?php echo $updatelikes ?>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
+             <h4 align="left" style="margin:2%;margin-left:5%"><a href=""><span class="fa fa-thumbs-o-up" ></span><span class="fa fa-thumbs-up" style="display:none"></span></a>&nbsp;<?php echo $updatelikes ?>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
              </div>
                
             </div>

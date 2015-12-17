@@ -98,4 +98,13 @@ create table textupdatecomments(
     foreign key(commenter) references users(username),
     updatecomment text,
     commented_at datetime not null,
-    likes in
+    likes int not null);
+
+
+create table textupdatelikes(
+    likername varchar(32) not null,
+    foreign key(likername) references users(username),
+    postid int not null,
+    foreign key(postid) references textupdates(id),
+    LorN Enum('0','1') default '0' not null
+    );

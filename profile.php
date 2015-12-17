@@ -107,9 +107,33 @@ document.getElementById('profile_menu_right').className="active";
 		$updatetimeyear = $updatetimearray[0];
 		$updatetimemonth = $updatetimearray[1];
 		$updatetimedate = $updatetimearray[2];
- 				
+ 		
+		$newline=explode("\n",$updatetext);
+		
+		//$newline = explode(PHP_EOL,$updatetext);
+		//foreach to find text lines
 		
 		
+		
+		foreach($newline as $line){
+				//$line .= $line.'<br />';
+				$line .= '<br />';
+				$newupdatetext .= $line;
+			}
+		/*
+		$linktesthttps = explode("https://",$updatetext);
+		$linktesthttp = explode("http://",$updatetext);	
+		
+		if($linktesthttps[1]!==""){
+			$domaintesthttps = explode("@@",$linktesthttps[1]);
+			$linktext = "https://".$domaintesthttps[0];
+			$newupdatetext='<a href='.$linktext.' target="_blank" style="text-decoration:none">'.$linktext.'</a>';
+		}else if($linktesthttp[1]!==""){	
+		$domaintesthttp = explode("@@",$linktesthttp[1]);
+		$linktext = "http://".$domaintesthttp[0];
+		$newupdatetext='<a href='.$linktext.' target="_blank" style="text-decoration:none">'.$linktext.'</a>';
+		}
+	*/
 				if(strtotime($updatetime)<strtotime($yearstart)){
 					
 	  ?>
@@ -121,7 +145,9 @@ document.getElementById('profile_menu_right').className="active";
                   <h4 align="left" style="margin:1%;" class="panel-heading"><img style="border:solid #2B66F0 2px;" src="<?php echo $updaterimage ?>" width="7%" height="7%" /><?php 
                   echo ' by <a href="profile.php?u='.$updateuser.'" style="text-decoration:none;">'.$updateuser.'</a> on '.date('d M Y D',strtotime($updatetime)) ?></h4>
                   <div class="panel-body"> 
-                  <h4 align="left" style="margin:1%"><?php echo $updatetext ?></h4><br />
+                  <h4 align="left" style="margin:1%"><?php echo $newupdatetext; 
+				  //we need to make this null otherwise previous text will join this
+				  $newupdatetext=""; ?></h4><br />
                   <img class="img-thumbnail" src="cp/Amazing Nature HD Wallpapers (6).jpg" style="display:none" />
                   </div><hr style="margin:0%" />
                  <div>

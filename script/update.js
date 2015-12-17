@@ -21,3 +21,8 @@ function textupdatefunc(){
 	ajax.send("tc="+textarea.value);
 	
 }
+
+function updatelike(){
+	
+	
+}
