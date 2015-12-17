@@ -35,7 +35,7 @@ $img = $row[0];
     </div>
     
     <div class="col-md-7" style="margin-top:1%">
-    	
+    	<script type="text/javascript" src="script/update.js"></script>
         
         <div class="well">
         <ul class="nav nav-pills" role="tablist">
@@ -49,12 +49,11 @@ $img = $row[0];
                       <div class="form-group">
                        	<textarea class="form-control" id="textupdateinput" name="textupdateinput" placeholder="What's in your mind?" rows="12"></textarea> 
                       </div>
-                     <div align="right"><button type="submit" class="btn btn-primary btn-lg"  >update</button></div> 
-                    </form>
+                     <div align="right"><button type="submit" class="btn btn-primary btn-lg" id="textsubmit" name="textsubmit" onClick="textupdatefunc()"  >update</button></div>															      				</form>
                   </div>
-                </div><!-- /.modal-content -->
-              </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+                </div>
+              </div>
+            </div>
           
           </li>
           <li role="presentation"><a href="#"><span class="glyphicon glyphicon-camera"></span>&nbsp; Add a photo </a></li>

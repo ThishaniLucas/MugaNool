@@ -1,4 +1,4 @@
-//alert("ajax");
+	//alert("ajax");
 
 function ajaxObj(meth,url){
 	var x = new XMLHttpRequest();
