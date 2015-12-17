@@ -99,24 +99,55 @@ $img = $row[0];
 				$line .= '<br />';
 				$newupdatetext .= $line;
 			}
-		
+
+
 		$linktesthttps = explode("https://",$newupdatetext);
 		$linktesthttp = explode("http://",$newupdatetext);	
-		
+	
 		$beforelinkstarthttps = $linktesthttps[0];
 		$beforelinkstarthttp = $linktesthttp[0];
 		
 		if($linktesthttps[1]!=""){
-			$domaintesthttps = explode("@@",$linktesthttps[1]);
+				$newupdatetext="";
+			}
+		
+		for($x=1;$x<count($linktesthttps);$x++)
+		{
+			if($newupdatetext==""){
+				$newupdatetext= $beforelinkstarthttps;
+				}
+		if($linktesthttps[$x]!=""){
+			$domaintesthttps = explode("@@",$linktesthttps[$x]);
 			$afterlink = $domaintesthttps[1];
 			$linktext = "https://".$domaintesthttps[0];
-			$newupdatetext=$beforelinkstarthttps.'<a href="'.$linktext.'" target="_blank" style="text-decoration:none">'.$linktext.'</a>'.$afterlink;
-		}else if($linktesthttp[1]!=""){
-			$domaintesthttp = explode("@@",$linktesthttp[1]);
+			$newupdatetext2='<a href="'.$linktext.'" target="_blank" style="text-decoration:none">'.$linktext.'</a>'.$afterlink;		
+		}
+			
+			$newupdatetext .= $newupdatetext2;
+		
+		}
+/*		
+		if($linktesthttp[1]!=""){
+				$newupdatetext="";
+			}
+
+
+		for($y=1;$y<count($linktesthttp);$y++){
+			if($newupdatetext==""){
+				$newupdatetext = $beforelinkstarthttp;
+				}
+			
+			if($linktesthttp[$y]!=""){
+			$domaintesthttp = explode("@@",$linktesthttp[$y]);
 			$afterlink = $domaintesthttp[1];
 			$linktext = "http://".$domaintesthttp[0];
-			$newupdatetext=$beforelinkstarthttp.'<a href="'.$linktext.'" target="_blank" style="text-decoration:none">'.$linktext.'</a>'.$afterlink;
+			$newupdatetext2='<a href="'.$linktext.'" target="_blank" style="text-decoration:none">'.$linktext.'</a>'.$afterlink;
 		}
+		
+		$newupdatetext .= $newupdatetext2;
+			}
+	*/	
+		
   ?>      
         	<div style="padding:0%" class="panel">
               <h4 align="left" style="margin:1%;" class="panel-heading"><img style="border:solid #2B66F0 2px;" src="<?php echo $updaterimage ?>" width="7%" height="7%" /><?php 
