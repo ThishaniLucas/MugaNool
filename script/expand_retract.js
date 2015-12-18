@@ -32,7 +32,7 @@ function retract(e){
 	
 	var loopTimer = setTimeout('retract(\''+e+'\')',8);
 	
-	if(h>0){
+	if(h>27){
 		h -= 5;
 		}
 	else{
