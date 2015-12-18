@@ -46,8 +46,8 @@ $img = $row[0];
                 <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <p class="modal-title" id="myModalLabel" style="color:#DC4C4E">add @@ signs at the end of like when you are adding a link</p>
-                    <p class="modal-title" id="myModalLabel" style="color:#DC4C4E">add !! signs infront when you are refering a person</p>
+                    <p class="modal-title" id="myModalLabel" style="color:#DC4C4E">add @@ signs at the end of link when you are adding a link</p>
+                    <p class="modal-title" id="myModalLabel" style="color:#DC4C4E">make sure you link protocol is https</p>
                   </div>
                   <div class="modal-body">
                     <form name="textupdate" id="textupdate" onSubmit="return false;">
@@ -70,7 +70,7 @@ $img = $row[0];
         </div>
         
   <?php 
-  	$sqlupdatesread = "SELECT `username`, `textupdate`, `posted_at`, `likes` FROM `textupdates` ORDER BY `posted_at` DESC";
+  	$sqlupdatesread = "SELECT `username`, `textupdate`, `posted_at`, `likes`, `id` FROM `textupdates` ORDER BY `posted_at` DESC";
 	
 	$queryupdateread = mysqli_query($db_conx,$sqlupdatesread);
 	
@@ -80,6 +80,8 @@ $img = $row[0];
 	$updatetext = $rowsupdate[1];
 	$updatetime = $rowsupdate[2];
 	$updatelikes = $rowsupdate[3];
+	$updateid = $rowsupdate[4];
+
 	 	 $sqlimgupdater = "SELECT avatar FROM users WHERE username='$updateuser'";
 		 $queryimgupdater = mysqli_query($db_conx,$sqlimgupdater);
 		 
@@ -157,7 +159,37 @@ $img = $row[0];
               <img class="img-thumbnail" src="cp/Amazing Nature HD Wallpapers (6).jpg" style="display:none" />
               </div><hr style="margin:0%" />
              <div>
-             <h4 align="left" style="margin:2%;margin-left:5%"><a href=""><span class="fa fa-thumbs-o-up" ></span><span class="fa fa-thumbs-up" style="display:none"></span></a>&nbsp;<?php echo $updatelikes ?>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
+             <h4 align="left" style="margin:2%;margin-left:5%">
+             
+             <a style="text-decoration:none" onClick="textupdatelike(<?php echo $updateid ?>)"><span class="fa fa-thumbs-o-up" 
+             
+             <?php 
+			 	
+				$sqlupdateliked_or_not = "SELECT * FROM textupdatelikes WHERE likername='$u_ses' AND postid='$updateid'";
+			 
+			 $queryUpdate_like_or_not = mysqli_query($db_conx,$sqlupdateliked_or_not);
+			 
+			 if(mysqli_num_rows($queryUpdate_like_or_not)<1){
+			 
+			  ?>style="display:inline"<?php }else{ ?> style="display:none"<?php } ?>
+              
+             
+             id="liketextupdate<?php echo $updateid ?>" ></span></a>
+             
+             
+             
+             
+             <a style="text-decoration:none" onClick="textupdateunlike(<?php echo $updateid ?>)"><span class="fa fa-thumbs-up" <?php 
+			 	
+				$sqlupdateliked_or_not = "SELECT * FROM textupdatelikes WHERE likername='$u_ses' AND postid='$updateid'";
+			 
+			 $queryUpdate_like_or_not = mysqli_query($db_conx,$sqlupdateliked_or_not);
+			 
+			 if(mysqli_num_rows($queryUpdate_like_or_not)<1){
+			 
+			  ?>style="display:none"<?php }else{ ?> style="display:inline"<?php } ?>
+              
+               id="likedtextupdate<?php echo $updateid ?>"></span></a>&nbsp;<span id="likesamount<?php echo $updateid ?>"><?php echo $updatelikes ?></span>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
              </div>
                
             </div>

@@ -22,7 +22,36 @@ function textupdatefunc(){
 	
 }
 
-function updatelike(){
+function textupdatelike(id){
 	
+	var like = document.getElementById("liketextupdate"+id);
+	var liked = document.getElementById("likedtextupdate"+id);
+	var likeamount = document.getElementById("likesamount"+id);
+	ajax = ajaxObj("POST","http://localhost/SocialNetworkingApp/textupdatelikeprocessing.php");
+	ajax.onreadystatechange = function(){
+		if(ajaxReturn(ajax)==true){
+			like.style.display="none";
+			liked.style.display="inline";
+			likeamount.innerHTML=ajax.responseText;
+		}	
+	}
+	ajax.send("id="+id);
 	
+}
+
+function textupdateunlike(id){
+	
+	var like = document.getElementById("liketextupdate"+id);
+	var liked = document.getElementById("likedtextupdate"+id);
+	var likeamount = document.getElementById("likesamount"+id);
+	ajax = ajaxObj("POST","http://localhost/SocialNetworkingApp/textupdateunlikeprocessing.php");
+	ajax.onreadystatechange = function(){
+		if(ajaxReturn(ajax)==true){
+				liked.style.display="none";
+				like.style.display="inline";
+				likeamount.innerHTML=ajax.responseText;
+			}
+		}	
+	
+	ajax.send("id="+id);
 }
