@@ -192,9 +192,11 @@ $img = $row[0];
                id="likedtextupdate<?php echo $updateid ?>"></span></a>&nbsp;<span id="likesamount<?php echo $updateid ?>"><?php echo $updatelikes ?></span>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
              </div>
              
-             <div class="panel-footer">
-             	<a style="text-decoration:none" onClick="return false;" onMouseDown="expand('prev_comment<?php echo $updateid ?>')">show previuos comments on this post...</a>
-             </div>
+             
+             	<a id="expandlink<?php echo $updateid ?>" style="text-decoration:none;display:inline"  onClick="return false;" onMouseDown="expand('prev_comment<?php echo $updateid ?>');comment_ex('<?php echo $updateid ?>');">show previuos comments on this post...</a>
+                
+                <a id="retractlink<?php echo $updateid ?>" style="text-decoration:none;display:none"  onClick="return false;" onMouseDown="retract('prev_comment<?php echo $updateid ?>');comment_re('<?php echo $updateid ?>');">hide previuos comments on this post...</a>
+             
              
                <div class="panel-footer" id="prev_comment<?php echo $updateid ?>" style="overflow:hidden;height:0px;">
                     <div class="row" style="padding:0%;margin:0%">
@@ -202,9 +204,7 @@ $img = $row[0];
                           <img style="margin:0%;padding:0%;" width="45px" height="45px" id="loggedinuserimage" class="img-responsive" src="<?php echo $img ?>" />&emsp;
                         </div>
                         <div class="col-md-11" style="">
-                            <form id="comment_form" role="form">
-                                <textarea class="form-control form-control-static" rows="2" style="resize:none" ></textarea>
-                            </form>
+                            cool
                         </div>
                     </div>
               
@@ -213,9 +213,7 @@ $img = $row[0];
                           <img style="margin:0%;padding:0%;" width="45px" height="45px" id="loggedinuserimage" class="img-responsive" src="<?php echo $img ?>" />&emsp;
                         </div>
                         <div class="col-md-11" style="">
-                            <form id="comment_form" role="form">
-                                <textarea class="form-control form-control-static" rows="2" style="resize:none" ></textarea>
-                            </form>
+                            chennai super kings ku wizle podu
                         </div>
                     </div>
                     
@@ -224,9 +222,7 @@ $img = $row[0];
                           <img style="margin:0%;padding:0%;" width="45px" height="45px" id="loggedinuserimage" class="img-responsive" src="<?php echo $img ?>" />&emsp;
                         </div>
                         <div class="col-md-11" style="">
-                            <form id="comment_form" role="form">
-                                <textarea class="form-control form-control-static" rows="2" style="resize:none" ></textarea>
-                            </form>
+                            sixku piragu sevenda sivajiku piragu evenda?
                         </div>
                     </div>
               

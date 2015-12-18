@@ -1,12 +1,31 @@
+
+function comment_ex(id){
+	
+	var exlink = document.getElementById('expandlink'+id);
+	var relink = document.getElementById('retractlink'+id);
+	
+
+	exlink.style.display="none";
+	relink.style.display="inline";
+
+	}
+	
+function comment_re(id){
+	
+	var exlink = document.getElementById('expandlink'+id);
+	var relink = document.getElementById('retractlink'+id);
+	
+	exlink.style.display="inline";
+	relink.style.display="none";
+	}
+
 function textupdatefunc(){
 
 	var textarea = document.getElementById("textupdateinput");
 	var textupdateform = document.getElementById("textupdate"); 
 	var textsubmit = document.getElementById("textsubmit"); 
 	
-	
-	
-	
+
 	ajax = ajaxObj("POST","http://localhost/SocialNetworkingApp/textupdateprocessing.php");
 	ajax.onreadystatechange = function(){
 		if(ajaxReturn(ajax)==true){
