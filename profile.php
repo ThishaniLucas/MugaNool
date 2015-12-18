@@ -14,6 +14,7 @@ if(isset($_GET["u"])==""){
 <?php include_once('.\templates\menu_item.php'); ?>
 <?php 
 $u = $_GET["u"];
+$u_ses = $_SESSION["user_logged"];
 $sql ="SELECT avatar,email,gender,website,counry,birthday FROM users WHERE username='$u'";
 $query=mysqli_query($db_conx,$sql);
 if(mysqli_num_rows($query)<1){
@@ -83,9 +84,10 @@ document.getElementById('profile_menu_right').className="active";
   
 
   <div class="col-md-7" >
+  <script type="text/javascript" src="script/update.js"></script>
  	<span id="recent"></span>
  <?php 
- 	$sqlupdatesread = "SELECT `username`, `textupdate`, `posted_at`, `likes` FROM `textupdates` WHERE username='$u' ORDER BY `posted_at` DESC";
+ 	$sqlupdatesread = "SELECT `username`, `textupdate`, `posted_at`, `likes`, `id` FROM `textupdates` WHERE username='$u' ORDER BY `posted_at` DESC";
 	
 	$queryupdateread = mysqli_query($db_conx,$sqlupdatesread);
 	$currYear = date('Y');
@@ -96,6 +98,7 @@ document.getElementById('profile_menu_right').className="active";
 	$updatetext = $rowsupdate[1];
 	$updatetime = $rowsupdate[2];
 	$updatelikes = $rowsupdate[3];
+	$updateid = $rowsupdate[4];
 	
 	 	 $sqlimgupdater = "SELECT avatar FROM users WHERE username='$updateuser'";
 		 $queryimgupdater = mysqli_query($db_conx,$sqlimgupdater);
@@ -129,16 +132,45 @@ document.getElementById('profile_menu_right').className="active";
 		$beforelinkstarthttp = $linktesthttp[0];
 		
 		if($linktesthttps[1]!=""){
-			$domaintesthttps = explode("@@",$linktesthttps[1]);
+				$newupdatetext="";
+			}
+		
+		for($x=1;$x<count($linktesthttps);$x++)
+		{
+			if($newupdatetext==""){
+				$newupdatetext= $beforelinkstarthttps;
+				}
+		if($linktesthttps[$x]!=""){
+			$domaintesthttps = explode("@@",$linktesthttps[$x]);
 			$afterlink = $domaintesthttps[1];
 			$linktext = "https://".$domaintesthttps[0];
-			$newupdatetext=$beforelinkstarthttps.'<a href="'.$linktext.'" target="_blank" style="text-decoration:none">'.$linktext.'</a>'.$afterlink;
-		}else if($linktesthttp[1]!=""){
-			$domaintesthttp = explode("@@",$linktesthttp[1]);
+			$newupdatetext2='<a href="'.$linktext.'" target="_blank" style="text-decoration:none">'.$linktext.'</a>'.$afterlink;		
+		}
+			
+			$newupdatetext .= $newupdatetext2;
+		
+		}
+/*		
+		if($linktesthttp[1]!=""){
+				$newupdatetext="";
+			}
+
+
+		for($y=1;$y<count($linktesthttp);$y++){
+			if($newupdatetext==""){
+				$newupdatetext = $beforelinkstarthttp;
+				}
+			
+			if($linktesthttp[$y]!=""){
+			$domaintesthttp = explode("@@",$linktesthttp[$y]);
 			$afterlink = $domaintesthttp[1];
 			$linktext = "http://".$domaintesthttp[0];
-			$newupdatetext=$beforelinkstarthttp.'<a href="'.$linktext.'" target="_blank" style="text-decoration:none">'.$linktext.'</a>'.$afterlink;
+			$newupdatetext2='<a href="'.$linktext.'" target="_blank" style="text-decoration:none">'.$linktext.'</a>'.$afterlink;
 		}
+		
+		$newupdatetext .= $newupdatetext2;
+			}
+	*/	
 	
 				if(strtotime($updatetime)<strtotime($yearstart)){
 					
@@ -157,7 +189,35 @@ document.getElementById('profile_menu_right').className="active";
                   <img class="img-thumbnail" src="cp/Amazing Nature HD Wallpapers (6).jpg" style="display:none" />
                   </div><hr style="margin:0%" />
                  <div>
-                 <h4 align="left" style="margin:2%;margin-left:5%"><a href=""><span class="fa fa-thumbs-o-up"></span></a>&nbsp;<?php echo $updatelikes ?>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
+                 <h4 align="left" style="margin:2%;margin-left:5%"> <a style="text-decoration:none" onClick="textupdatelike(<?php echo $updateid ?>)"><span class="fa fa-thumbs-o-up" 
+             
+             <?php 
+			 	
+				$sqlupdateliked_or_not = "SELECT * FROM textupdatelikes WHERE likername='$u_ses' AND postid='$updateid'";
+			 
+			 $queryUpdate_like_or_not = mysqli_query($db_conx,$sqlupdateliked_or_not);
+			 
+			 if(mysqli_num_rows($queryUpdate_like_or_not)<1){
+			 
+			  ?>style="display:inline"<?php }else{ ?> style="display:none"<?php } ?>
+              
+             
+             id="liketextupdate<?php echo $updateid ?>" ></span></a>
+             
+             
+             
+             
+             <a style="text-decoration:none" onClick="textupdateunlike(<?php echo $updateid ?>)"><span class="fa fa-thumbs-up" <?php 
+			 	
+				$sqlupdateliked_or_not = "SELECT * FROM textupdatelikes WHERE likername='$u_ses' AND postid='$updateid'";
+			 
+			 $queryUpdate_like_or_not = mysqli_query($db_conx,$sqlupdateliked_or_not);
+			 
+			 if(mysqli_num_rows($queryUpdate_like_or_not)<1){
+			 
+			  ?>style="display:none"<?php }else{ ?> style="display:inline"<?php } ?>
+              
+               id="likedtextupdate<?php echo $updateid ?>"></span></a>&nbsp;<span id="likesamount<?php echo $updateid ?>"><?php echo $updatelikes ?></span>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
                  </div>
                    
                 </div>
