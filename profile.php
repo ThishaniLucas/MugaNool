@@ -66,17 +66,17 @@ document.getElementById('profile_menu_right').className="active";
     </div>
     
     <div id="profile_details" class="well">
-    	<div title="name"><span class="glyphicon glyphicon-user"></span>
+    	<div title="name" style="word-wrap:break-word"><span class="glyphicon glyphicon-user"></span>
 		&nbsp;<?php echo $u; ?></div><hr />
-        <div title="email"><span class="glyphicon glyphicon-envelope"></span>
+        <div title="email" style="word-wrap:break-word"><span class="glyphicon glyphicon-envelope"></span>
 		&nbsp;<?php echo $email; ?></div><hr />
-        <div title="gender"><?php if($gender=='m'){echo '<i class="fa fa-male"></i>&nbsp;&nbsp;&nbsp;male';}else{ echo '<i class="fa fa-female"></i>&nbsp;&nbsp;female'; } ?></div><hr />
-        <div title="website"><span class="glyphicon glyphicon-globe"></span>
+        <div title="gender" style="word-wrap:break-word"><?php if($gender=='m'){echo '<i class="fa fa-male"></i>&nbsp;&nbsp;&nbsp;male';}else{ echo '<i class="fa fa-female"></i>&nbsp;&nbsp;female'; } ?></div><hr />
+        <div title="website" style="word-wrap:break-word"><span class="glyphicon glyphicon-globe"></span>
 		&nbsp;
 		<?php if($website==""){echo "none";}else{ echo $website; }?></div><hr />
-        <div title="country"><span class="glyphicon glyphicon-flag"></span>
+        <div title="country" style="word-wrap:break-word"><span class="glyphicon glyphicon-flag"></span>
 		&nbsp;<?php echo $country; ?></div><hr />
-        <div title="birthday"><i class="fa fa-birthday-cake"></i></span>
+        <div title="birthday" style="word-wrap:break-word"><i class="fa fa-birthday-cake"></i></span>
 		&nbsp;<?php echo $birthday; ?></div>
     </div>
      

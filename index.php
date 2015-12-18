@@ -191,8 +191,65 @@ $img = $row[0];
               
                id="likedtextupdate<?php echo $updateid ?>"></span></a>&nbsp;<span id="likesamount<?php echo $updateid ?>"><?php echo $updatelikes ?></span>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
              </div>
+             
+             <div class="panel-footer">
+             	<a style="text-decoration:none" onClick="return false;" onMouseDown="expand('prev_comment<?php echo $updateid ?>')">show previuos comments on this post...</a>
+             </div>
+             
+               <div class="panel-footer" id="prev_comment<?php echo $updateid ?>" style="overflow:hidden;height:0px;">
+                    <div class="row" style="padding:0%;margin:0%">
+                        <div class="col-md-1" style="padding:1%;margin:0%" align="center">
+                          <img style="margin:0%;padding:0%;" width="45px" height="45px" id="loggedinuserimage" class="img-responsive" src="<?php echo $img ?>" />&emsp;
+                        </div>
+                        <div class="col-md-11" style="">
+                            <form id="comment_form" role="form">
+                                <textarea class="form-control form-control-static" rows="2" style="resize:none" ></textarea>
+                            </form>
+                        </div>
+                    </div>
+              
+              		 <div class="row" style="padding:0%;margin:0%">
+                        <div class="col-md-1" style="padding:1%;margin:0%" align="center">
+                          <img style="margin:0%;padding:0%;" width="45px" height="45px" id="loggedinuserimage" class="img-responsive" src="<?php echo $img ?>" />&emsp;
+                        </div>
+                        <div class="col-md-11" style="">
+                            <form id="comment_form" role="form">
+                                <textarea class="form-control form-control-static" rows="2" style="resize:none" ></textarea>
+                            </form>
+                        </div>
+                    </div>
+                    
+                     <div class="row" style="padding:0%;margin:0%">
+                        <div class="col-md-1" style="padding:1%;margin:0%" align="center">
+                          <img style="margin:0%;padding:0%;" width="45px" height="45px" id="loggedinuserimage" class="img-responsive" src="<?php echo $img ?>" />&emsp;
+                        </div>
+                        <div class="col-md-11" style="">
+                            <form id="comment_form" role="form">
+                                <textarea class="form-control form-control-static" rows="2" style="resize:none" ></textarea>
+                            </form>
+                        </div>
+                    </div>
+              
+                   </div>
+                   
+                   
+              
                
+               <div class="panel-footer" id="new_comment_section">
+                    <div class="row" style="padding:0%;margin:0%">
+                        <div class="col-md-1" style="padding:1%;margin:0%" align="center">
+                          <img style="margin:0%;padding:0%;" width="45px" height="45px" id="loggedinuserimage" class="img-responsive" src="<?php echo $img ?>" />&emsp;
+                        </div>
+                        <div class="col-md-11">
+                            <form id="comment_form" role="form">
+                                <textarea class="form-control form-control-static" rows="2" style="resize:none" ></textarea>
+                            </form>
+                        </div>
+                    </div>
+                   </div>
+                   
             </div>
+
 
 <?php } ?>        
     

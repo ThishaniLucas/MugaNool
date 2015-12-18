@@ -1,5 +1,3 @@
-
-
 function textupdatefunc(){
 
 	var textarea = document.getElementById("textupdateinput");
