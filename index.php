@@ -192,15 +192,20 @@ $img = $row[0];
                id="likedtextupdate<?php echo $updateid ?>"></span></a>&nbsp;<span id="likesamount<?php echo $updateid ?>"><?php echo $updatelikes ?></span>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
              </div>
              
-              				
+              	<?php 
+								$sqlisthereanycomments = "SELECT updatecomment FROM textupdatecomments WHERE postid='$updateid'";
+								$queryisthereanycomments = mysqli_query($db_conx,$sqlisthereanycomments);
+								$no_of_comment = mysqli_num_rows($queryisthereanycomments);
+									
+				?>
                            
                           
-             	<a href="" id="expandlink<?php echo $updateid ?>" style="text-decoration:none;display:inline"  onClick="return false;" onMouseDown="expand('prev_comment<?php echo $updateid ?>');comment_ex('<?php echo $updateid ?>');">show previuos comments on this post...</a>
+             	<a href="" id="expandlink<?php echo $updateid ?>" style="text-decoration:none;<?php if($no_of_comment<1){ ?> display:none;<?php } ?>"  onClick="return false;" onMouseDown="expand('prev_comment<?php echo $updateid ?>');comment_ex('<?php echo $updateid ?>');">show previuos comments on this post...</a>
                 
                 <a href="" id="retractlink<?php echo $updateid ?>" style="text-decoration:none;display:none"  onClick="return false;" onMouseDown="retract('prev_comment<?php echo $updateid ?>');comment_re('<?php echo $updateid ?>');">hide previuos comments on this post...</a>
              
              
-               <div class="panel-footer" id="prev_comment<?php echo $updateid ?>" style="overflow:hidden;height:0px;">
+               <div class="panel-footer" id="prev_comment<?php echo $updateid ?>" style="overflow:hidden;height:0px;<?php if($no_of_comment<0){ ?> display:none;<?php } ?>">
                     <div class="row" style="padding:0%;margin:0%">
                    		
 						<?php 
@@ -226,10 +231,11 @@ $img = $row[0];
                         </div>
                         <div class="col-md-11" style="">
                          	
-                           <div id="commenter_details"><a href="profile.php?u=<?php echo $commenter ?>"><?php echo $commenter ?></a>&nbsp;commented at <?php echo $comment_time ?></div>
-						  
+                           <div id="commenter_details"><a style="text-decoration:none" href="profile.php?u=<?php echo $commenter ?>"><?php echo $commenter ?></a>&nbsp;commented on <?php echo date("d M Y",strtotime($comment_time)) ?> at <?php echo date("h:i:sa",strtotime($comment_time)) ?></div>
+						 
                            <div id="actual_comment"><?php echo $comment; ?></div> 
-                           
+                           <a href="" onClick="return false"><span class="fa fa-thumbs-o-up" style=""></span>&nbsp;</a>
+                           <a href="" onClick="return false"><span class="fa fa-thumbs-up" style="display:none"></span>&nbsp;</a><span><?php echo "0"; ?></span>
                         </div>
                        <?php } ?>
                     </div>
