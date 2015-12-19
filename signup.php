@@ -62,7 +62,7 @@ if(isset($_SESSION["user_logged"]) || isset($_COOKIE["user_logged"])){
     <div class="row">
       
       <div class="col-md-8">
-      	<img src="img/logo_round2.gif" width="600px" height="600px"/>
+      	<img src="img/handshake.png" style="margin-top:8%" width="500px" height="500px"/>
       </div>
       
       <div class="col-md-4">

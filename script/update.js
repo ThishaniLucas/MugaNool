@@ -1,4 +1,22 @@
 
+function inserticon(i,uid){
+	var textbox = document.getElementById('comment_box'+uid);
+	var textxomment = textbox.value;
+	if(i=="arrow-left"){
+		textbox.value = textxomment+"\n";
+		
+		}else if(i=="thumbs-up"){
+		textbox.value = textxomment+"`thums-up`";
+		}else if(i=="thumbs-down"){
+		textbox.value = textxomment+"`thums-down`";
+		}
+	//textbox.value=textxomment+'<div style="color: blue; font-size:50px;" align="center" class="glyphicon glyphicon-'+i+'"></div>';
+			//textbox.disabled=true;
+		
+	
+	}
+
+
 function comment_ex(id){
 	
 	var exlink = document.getElementById('expandlink'+id);

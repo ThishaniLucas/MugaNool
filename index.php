@@ -236,13 +236,15 @@ $img = $row[0];
                            <div id="actual_comment"><?php echo $comment; ?></div> 
                            <a href="" onClick="return false"><span class="fa fa-thumbs-o-up" style=""></span>&nbsp;</a>
                            <a href="" onClick="return false"><span class="fa fa-thumbs-up" style="display:none"></span>&nbsp;</a><span><?php echo "0"; ?></span>
-                        </div>
+                        </div> 
+                        <hr style="border:1px solid #F5F5F5;" />
                        <?php } ?>
+                       
                     </div>
-              
+             
                </div>
                    
-                   
+                  
               
                
                <div class="panel-footer" id="new_comment_section">
@@ -250,10 +252,15 @@ $img = $row[0];
                         <div class="col-md-1" style="padding:1%;margin:0%" align="center">
                           <img style="margin:0%;padding:0%;" width="45px" height="45px" id="loggedinuserimage" class="img-responsive" src="<?php echo $img ?>" />&emsp;
                         </div>
-                        <div class="col-md-11">
+                        <div class="col-md-10">
                             <form id="comment_form" role="form">
-                                <textarea class="form-control form-control-static" rows="2" style="resize:none" ></textarea>
+                                <textarea id="comment_box<?php echo $updateid ?>" class="form-control form-control-static" rows="2" style="resize:none"></textarea>
                             </form>
+                        </div>
+                        <div class="col-md-1" align="center;">
+                        <a title="add a new line" onMouseDown="inserticon('arrow-left','<?php echo $updateid ?>')"><span class="glyphicon glyphicon-arrow-left" style="float:right;"></span></a><br />
+                        <a onMouseDown="inserticon('thumbs-up','<?php echo $updateid ?>')"><span class="glyphicon glyphicon-thumbs-up" style="float:right;"></span></a><br />
+                        <a onMouseDown="inserticon('thumbs-down','<?php echo $updateid ?>')"><span class="glyphicon glyphicon-thumbs-down" style="float:right;"></span></a>
                         </div>
                     </div>
                    </div>
