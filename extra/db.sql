@@ -94,12 +94,14 @@ create table textupdates(
     
 create table textupdatecomments(
     id int not null auto_increment primary key,
+    postid int not null,
+    foreign key(postid) references textupdates (id),
     commenter varchar(32) not null,
     foreign key(commenter) references users(username),
     updatecomment text,
     commented_at datetime not null,
-    likes int not null);
-
+    likes int not null default 0
+    );
 
 create table textupdatelikes(
     likername varchar(32) not null,

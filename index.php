@@ -192,41 +192,49 @@ $img = $row[0];
                id="likedtextupdate<?php echo $updateid ?>"></span></a>&nbsp;<span id="likesamount<?php echo $updateid ?>"><?php echo $updatelikes ?></span>&emsp;&emsp;&emsp;<a href=""><span class="fa fa-comment-o"></span></a>&nbsp;&emsp;&emsp;&emsp;<a href=""><span class="fa fa-share-alt"></span></a>&nbsp;</h4>
              </div>
              
-             
-             	<a id="expandlink<?php echo $updateid ?>" style="text-decoration:none;display:inline"  onClick="return false;" onMouseDown="expand('prev_comment<?php echo $updateid ?>');comment_ex('<?php echo $updateid ?>');">show previuos comments on this post...</a>
+              				
+                           
+                          
+             	<a href="" id="expandlink<?php echo $updateid ?>" style="text-decoration:none;display:inline"  onClick="return false;" onMouseDown="expand('prev_comment<?php echo $updateid ?>');comment_ex('<?php echo $updateid ?>');">show previuos comments on this post...</a>
                 
-                <a id="retractlink<?php echo $updateid ?>" style="text-decoration:none;display:none"  onClick="return false;" onMouseDown="retract('prev_comment<?php echo $updateid ?>');comment_re('<?php echo $updateid ?>');">hide previuos comments on this post...</a>
+                <a href="" id="retractlink<?php echo $updateid ?>" style="text-decoration:none;display:none"  onClick="return false;" onMouseDown="retract('prev_comment<?php echo $updateid ?>');comment_re('<?php echo $updateid ?>');">hide previuos comments on this post...</a>
              
              
                <div class="panel-footer" id="prev_comment<?php echo $updateid ?>" style="overflow:hidden;height:0px;">
                     <div class="row" style="padding:0%;margin:0%">
+                   		
+						<?php 
+						   		$sqlgetcomment = "SELECT commenter,updatecomment,commented_at,likes FROM textupdatecomments WHERE postid='$updateid'";
+								
+								$querygetcomment = mysqli_query($db_conx,$sqlgetcomment);
+								
+								while($rowscomment = mysqli_fetch_array($querygetcomment)){
+									$commenter = $rowscomment[0];
+									$comment = $rowscomment[1];
+									$comment_time = $rowscomment[2];
+									$commentlikes = $rowscomment[3];
+									
+									$sqlcommenterimage = "SELECT avatar FROM users WHERE username='$commenter'";
+									$querycommenterimage = mysqli_query($db_conx,$sqlcommenterimage);
+									$rowcommenterimage = mysqli_fetch_row($querycommenterimage);
+									$commenterimage = $rowcommenterimage[0];
+								
+						   ?>
+                        
                         <div class="col-md-1" style="padding:1%;margin:0%" align="center">
-                          <img style="margin:0%;padding:0%;" width="45px" height="45px" id="loggedinuserimage" class="img-responsive" src="<?php echo $img ?>" />&emsp;
+                          <img style="margin:0%;padding:0%;" width="45px" height="45px" id="loggedinuserimage" class="img-responsive" src="<?php echo $commenterimage ?>" />&emsp;
                         </div>
                         <div class="col-md-11" style="">
-                            cool
+                         	
+                           <div id="commenter_details"><a href="profile.php?u=<?php echo $commenter ?>"><?php echo $commenter ?></a>&nbsp;commented at <?php echo $comment_time ?></div>
+						  
+                           <div id="actual_comment"><?php echo $comment; ?></div> 
+                           
                         </div>
+                       <?php } ?>
                     </div>
               
-              		 <div class="row" style="padding:0%;margin:0%">
-                        <div class="col-md-1" style="padding:1%;margin:0%" align="center">
-                          <img style="margin:0%;padding:0%;" width="45px" height="45px" id="loggedinuserimage" class="img-responsive" src="<?php echo $img ?>" />&emsp;
-                        </div>
-                        <div class="col-md-11" style="">
-                            chennai super kings ku wizle podu
-                        </div>
-                    </div>
-                    
-                     <div class="row" style="padding:0%;margin:0%">
-                        <div class="col-md-1" style="padding:1%;margin:0%" align="center">
-                          <img style="margin:0%;padding:0%;" width="45px" height="45px" id="loggedinuserimage" class="img-responsive" src="<?php echo $img ?>" />&emsp;
-                        </div>
-                        <div class="col-md-11" style="">
-                            sixku piragu sevenda sivajiku piragu evenda?
-                        </div>
-                    </div>
-              
-                   </div>
+               </div>
                    
                    
               
