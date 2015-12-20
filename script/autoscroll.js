@@ -1,6 +1,6 @@
 var scrolly = 0;// number of the pixel to be moved
 var distance = 40;// no of pixel per function call
-var speed = 20; // speed of settimeout method
+var speed = 15; // speed of settimeout method
 //alert("auto scroll");
 function autoScrollTo(e){
 	var currentY = window.pageYOffset; // current position of us in the browser

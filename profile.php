@@ -36,6 +36,8 @@ $birthday = $row[5];
 <script type="text/javascript">
 document.getElementById('profile_menu_right').className="active";
 </script>
+
+
 <div class="row" id="profile" style="margin-top:3%;">
   <div class="col-md-5">
   	 <a class="thumbnail" data-toggle="modal" data-target="#profilePicModal" href="" title="change profile picture">
@@ -64,6 +66,13 @@ document.getElementById('profile_menu_right').className="active";
         </div>
       </div>
     </div>
+    
+    
+    	<div style="margin:3%" align="center">
+        <button class="btn btn-success btn-group-justified" <?php if($u==$u_ses){ ?> style="display:none"<?php } ?>><span class="fa fa-user-plus"></span><span style="display:none" class="glyphicon glyphicon-ok"></span>&emsp;<span>ADD FRIEND</span></button><br />
+        <button class="btn btn-danger btn-group-justified" <?php if($u==$u_ses){ ?> style="display:none"<?php } ?>><span class="fa fa-user-times"></span>&emsp;<span>BLOCK</span></button>
+        </div>
+   
     
     <div id="profile_details" class="well">
     	<div title="name" style="word-wrap:break-word"><span class="glyphicon glyphicon-user"></span>

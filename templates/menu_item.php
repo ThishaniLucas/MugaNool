@@ -2,24 +2,21 @@
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="width:94%;">
               <form class="navbar-form navbar-left" role="search" style="padding:0px;width:50%;">
                 <div class="form-group" style="padding:0px;width:100%;">
-                  <input type="text" class="form-control" placeholder="Search & Find Friends" style="padding:0px;width:90%;">
-                  <button type="submit" class="btn btn-default" style=""><span class="glyphicon glyphicon-search"></span></button>
-                </div>
+                  <input type="text" class="form-control" placeholder="Search & Find Friends" style="padding:0px;width:90%;"> 
+                  <button type="submit"  class="btn btn-default" style=""><span class="glyphicon glyphicon-search"></span></button>
+                </div>            
               </form>
-              
+                     
               <ul class="nav navbar-nav navbar-right">
               	<li><a href="http://localhost/SocialNetworkingApp/index.php" title="Home"><span class="glyphicon glyphicon-home"></span></a></li>
                 
-                <li class="dropdown"><a href="#" title="friend requests" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp;<span class="badge" style="font-size:9px;margin-bottom:3px;" id="request_count">4</span></a>
+                <li class="dropdown"><a href="#" title="friend requests" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp;<span class="badge" style="font-size:9px;margin-bottom:3px;" id="request_count">0</span></a>
                 <ul class="dropdown-menu list-group" role="menu">
                    <div class="list-group">
-                      <a href="#" class="list-group-item active">
+                      <a href="#" class="list-group-item">
                         Friend one
                       </a>
-                      <a href="#" class="list-group-item"> Friend one</a>
-                      <a href="#" class="list-group-item"> Friend one</a>
-                      <a href="#" class="list-group-item"> Friend one</a>
-                      <a href="#" class="list-group-item"> Friend one</a>
+                      
                     </div>
                   </ul>
                 
@@ -71,5 +68,4 @@
           </div>
         </nav>
     </header>
-    
     <section id="my_section">

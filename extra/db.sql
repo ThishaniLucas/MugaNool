@@ -10,6 +10,7 @@ CREATE TABLE users(
   gender enum('m','f') NOT NULL,
   website varchar(255),
   counry varchar(255),
+  birthday date,
   userlevel enum('a','b','c','d') NOT NULL DEFAULT 'a',
   avatar varchar(255),
   ip varchar(255),
@@ -109,4 +110,14 @@ create table textupdatelikes(
     postid int not null,
     foreign key(postid) references textupdates(id),
     LorN Enum('0','1') default '0' not null
+    );
+	
+create table friendrequest(
+    id int not null auto_increment primary key,
+    requester varchar(32) not null,
+    foreign key(requester) references users (username),
+    requeste_to varchar(32) not null,
+    foreign key(requeste_to) references users (username),
+    lastrequestcheck datetime,
+    requested_at datetime
     );
