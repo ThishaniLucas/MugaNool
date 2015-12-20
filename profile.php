@@ -36,7 +36,7 @@ $birthday = $row[5];
 <script type="text/javascript">
 document.getElementById('profile_menu_right').className="active";
 </script>
-
+ <script src="script/friend.js"></script>
 
 <div class="row" id="profile" style="margin-top:3%;">
   <div class="col-md-5">
@@ -68,9 +68,28 @@ document.getElementById('profile_menu_right').className="active";
     </div>
     
     
+     
     	<div style="margin:3%" align="center">
-        <button class="btn btn-success btn-group-justified" <?php if($u==$u_ses){ ?> style="display:none"<?php } ?>><span class="fa fa-user-plus"></span><span style="display:none" class="glyphicon glyphicon-ok"></span>&emsp;<span>ADD FRIEND</span></button><br />
-        <button class="btn btn-danger btn-group-justified" <?php if($u==$u_ses){ ?> style="display:none"<?php } ?>><span class="fa fa-user-times"></span>&emsp;<span>BLOCK</span></button>
+        <?php 
+			$sqlreqcheck = "SELECT * FROM friendrequest WHERE requester='$u_ses' AND requeste_to='$u'";
+			$queryreqcheck = mysqli_query($db_conx,$sqlreqcheck);
+			
+			
+			//need to code this is for when user requested person visit profile it should be accept request
+			$sqlcuruserreqcheck = "SELECT * FROM friendrequest WHERE requester='$u' AND requeste_to='$u_ses'";
+			$querycuruserreqcheck = mysqli_query($db_conx,$sqlcuruserreqcheck);
+			
+			if(mysqli_num_rows($queryreqcheck)>0){
+					
+			}
+		?>
+        
+        <button class="btn btn-success btn-group-justified" id="friendbutton" <?php if(mysqli_num_rows($queryreqcheck)>0){  ?> disabled <?php } ?> onClick="document.getElementById('friendbutton').innerHTML='request sent';document.getElementById('friendbutton').disabled=true;sendfriendreq('<?php echo $u ?>')" <?php if($u==$u_ses){ ?> style="display:none"<?php } ?>><?php if(mysqli_num_rows($queryreqcheck)>0){  ?> Request Sent <?php }else if(mysqli_num_rows($querycuruserreqcheck)>0){
+			?>Accept Request<?php }else{ ?>ADD FRIEND<?php } ?></button><br />
+        <button class="btn btn-danger btn-group-justified" onClick="" <?php if($u==$u_ses){ ?> style="display:none"<?php } ?>><span class="fa fa-user-times"></span>&emsp;<span>BLOCK</span></button>
+        
+       
+        
         </div>
    
     

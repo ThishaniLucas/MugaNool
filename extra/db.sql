@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS friends(
   user2 varchar(32) NOT NULL,
   FOREIGN KEY (user2) REFERENCES users(username),
   friend_date datetime NOT NULL,
-  accepted enum('0','1') NOT NULL DEFAULT '0'
+  accepted enum('0','1') NOT NULL DEFAULT '1'
   );
 
 
