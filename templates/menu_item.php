@@ -28,16 +28,28 @@ $user= $_SESSION["user_logged"];
 				?>
                 
                 <li class="dropdown" ><a href="#" title="friend requests" class="dropdown-toggle" data-toggle="dropdown"><span <?php if(mysqli_num_rows($queryreqcheckmenu)>0){ ?> style="color:#ED1515;" <?php } ?> class="glyphicon glyphicon-user"></span> &nbsp;<span class="badge" style="font-size:11px;margin-bottom:3px;color:#F55D5D;" id="request_count"><?php echo mysqli_num_rows($queryreqcheckmenu); ?></span></a>
-                <ul class="dropdown-menu list-group" role="menu">
-                   <div class="list-group">
+                <ul class="dropdown-menu list-group list-group-item-info" role="menu">
+                   <div class="list-group " align="center">
                    <?php 
 				   	while($rowsrequests=mysqli_fetch_array($queryreqcheckmenu)){
 						$requster = $rowsrequests[0];
-				   ?>
-                      <a href="http://localhost/SocialNetworkingApp/profile.php?u=<?php echo $requster ?>" class="list-group-item">
-                       	<?php echo $requster; ?>
+						
+						$sqlrequesterimage = "SELECT avatar FROM users WHERE username='$requster'";
+						$queryrequesterimage = mysqli_query($db_conx,$sqlrequesterimage);
+						
+						$rowrequesterimage = mysqli_fetch_row($queryrequesterimage);
+						
+				   ?>     	
+                      <a style="font-size:18px;color:#D53F41" href="http://localhost/SocialNetworkingApp/profile.php?u=<?php echo $requster ?>" class="list-group-item">
+                       	<img class="img-circle" src="<?php echo $rowrequesterimage[0] ?>" width="20%" height="20%" />&emsp;<?php echo $requster; ?>
                       </a>
+                      <div align="center">
+                          <button class="btn btn-info"><span class="glyphicon glyphicon-ok"></span></button>
+                          <button class="btn btn-info"><span class="glyphicon glyphicon-remove"></span></button>
+                      </div>
+                      
                       <?php } ?>
+                      
                     </div>
                   </ul>
                 
